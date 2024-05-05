@@ -12,8 +12,8 @@ export const logger = winston.createLogger({
   level: 'info',
   format: winston.format.json(),
   transports: [
-    new winston.transports.File({ dirname: 'logs', filename: "error.log", level: "error" }),
-    new winston.transports.File({ dirname: 'logs', filename: "combined.log" }),
+    new winston.transports.File({ dirname: 'src/logs', filename: "error.log", level: "error" }),
+    new winston.transports.File({ dirname: 'src/logs', filename: "combined.log" }),
   ],
 });
 
