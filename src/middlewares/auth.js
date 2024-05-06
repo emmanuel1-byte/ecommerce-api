@@ -2,13 +2,14 @@ import jwt from "jsonwebtoken";
 import { loginSchema, signUpSchema } from "../modules/auth/schema.js";
 import { respond } from "../utils/response.js";
 import { repository } from "../modules/auth/repository.js";
+import config from "../utils/config.js";
 
 export function validateJwt(req, res, next) {
   const accessToken = req.headers.authorization.split(" ")[1];
   if (!accessToken) {
     respond(res, 400, "Access token required!");
   }
-  jwt.verify(accessToken, "", (err, payload) => {
+  jwt.verify(accessToken, config.JWT_SECRET, (err, payload) => {
     if (err) {
       if (err instanceof jwt.TokenExpiredError) {
         return respond(
@@ -19,6 +20,7 @@ export function validateJwt(req, res, next) {
       }
       return respond(res, 401, false, "Unauthorized access. Please log in.");
     }
+    req.accessToken = accessToken
     req.userId = payload.sub;
     next();
   });
@@ -49,8 +51,9 @@ export async function checkAccountVerificationStatus(req, res, next) {
         "Account not verified. Please verify your account via email."
       );
     }
-    return respond(res, 401, false, "Invalid credentials");
+    next()
   } catch (err) {
     next(err);
   }
 }
+

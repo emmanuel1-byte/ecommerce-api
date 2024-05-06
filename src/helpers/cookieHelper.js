@@ -1,8 +1,11 @@
+import { twoMonthsExpiry } from "../utils/date-time.js";
+
 export async function setCookie(res, refreshToken) {
   res.clearCookie("resfrehToken");
   res.cookie("refreshToken", refreshToken, {
     maxAge: twoMonthsExpiry,
-    scure: false,
+    secure: false,
+    httpOnly: true
   });
 }
 
