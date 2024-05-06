@@ -1,0 +1,10 @@
+{"level":"error","message":"Cannot read properties of undefined (reading 'email')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'email')"}
+{"level":"error","message":"\"email\" is required"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'email')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'email')"}
+{"level":"error","message":"Error sending email:"}
+{"level":"error","message":"Error sending email:"}
+{"level":"error","message":"\"role\" is required"}
+{"level":"error","message":"\"role\" is required"}
+{"level":"error","message":"Cannot read properties of null (reading 'verified')"}
