@@ -1,68 +1,56 @@
 import jwt from "jsonwebtoken";
-import { User } from "../modules/auth/model";
-import { signUpSchema } from "../modules/auth/schema";
-import { errorhandler } from "../utils/errorHandler";
+import { loginSchema, signUpSchema } from "../modules/auth/schema.js";
+import { respond } from "../utils/response.js";
+import { repository } from "../modules/auth/repository.js";
 
 export function validateJwt(req, res, next) {
-  if (!req.headers || !req.headers.authorization) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Authorization header required!" });
-  }
   const accessToken = req.headers.authorization.split(" ")[1];
   if (!accessToken) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Access token required!" });
+    respond(res, 400, "Access token required!");
   }
   jwt.verify(accessToken, "", (err, payload) => {
     if (err) {
       if (err instanceof jwt.TokenExpiredError) {
-        return res.status(401).json({
-          success: false,
-          message: "Your session has expired. Please log in again.",
-        });
+        return respond(
+          res,
+          401,
+          "Your session has expired. Please log in again."
+        );
       }
-      return res.status(401).json({
-        success: false,
-        message: "Unauthorized access. Please log in.",
-      });
+      return respond(res, 401, false, "Unauthorized access. Please log in.");
     }
     req.userId = payload.sub;
     next();
   });
 }
 
-export async function checkUserExistence(req, res, next) {
+export async function ensureUniqueUser(req, res, next) {
   try {
     const validatedData = await signUpSchema.validateAsync(req.body);
-    const existingUser = await User.findOne({
-      where: { email: validatedData.email },
-    });
+    const existingUser = await repository.findUserByEmail(validatedData.email);
     if (existingUser) {
-      return res
-        .status(409)
-        .json({ success: false, message: "Account already exist!" });
+      return respond(res, 409, false, "Account already exist!");
     }
     next();
   } catch (err) {
-    errorhandler(err, req, res, next);
+    next(err);
   }
 }
 
-export async function accountVerificationStatus(req, res, next) {
+export async function checkAccountVerificationStatus(req, res, next) {
   try {
-    if (!user.verified) {
-      res.status(403),
-        json({
-          success: false,
-          message:
-            "Account not verified. Please verify your account via email.",
-        });
+    const validatedData = await loginSchema.validateAsync(req.body);
+    const user = await repository.findUserByEmail(validatedData.email);
+    if (user && !user.verified) {
+      return respond(
+        res,
+        403,
+        false,
+        "Account not verified. Please verify your account via email."
+      );
     }
+    return respond(res, 401, false, "Invalid credentials");
   } catch (err) {
-    errorhandler(err, req, res, next);
+    next(err);
   }
 }
-
-
