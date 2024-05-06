@@ -1,6 +1,8 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../../utils/database.js";
 import { randomUUID } from "crypto";
+import bcrypt from "bcrypt";
+import { logger } from "../../utils/logger.js";
 
 export const User = sequelize.define(
   "User",
@@ -23,7 +25,8 @@ export const User = sequelize.define(
     },
 
     role: {
-      type: DataTypes.ENUM("User", "Seller", "Admin"),
+      type: DataTypes.ENUM,
+      values: ["User", "Seller", "Admin"],
       allowNull: false,
     },
 
@@ -85,7 +88,7 @@ export const Token = sequelize.define(
   { timestamps: true, freezeTableName: true, indexes: [{ fields: ["token"] }] }
 );
 
-export const blackList = sequelize.define(
+export const BlackList = sequelize.define(
   "BlackList",
   {
     id: {
@@ -102,6 +105,17 @@ export const blackList = sequelize.define(
   },
   { timestamps: true, freezeTableName: true }
 );
+
+
+/** Hooks */
+User.beforeCreate(async function (user, options) {
+  try {
+    return (user.password = await bcrypt.hash(user.password, 10));
+  } catch (err) {
+    logger.error(err.message);
+  }
+});
+
 
 User.hasOne(Token, { foreignKey: "userId", onDelete: "CASCADE" }),
   Token.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });

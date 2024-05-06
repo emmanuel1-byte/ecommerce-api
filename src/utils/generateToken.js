@@ -1,6 +1,7 @@
 import { randomBytes } from "crypto";
 import jwt from "jsonwebtoken";
 import { oneHour } from "./date-time.js";
+import config from "./config.js";
 
 export function generateToken(userId, tokenType) {
   return {
@@ -13,7 +14,7 @@ export function generateToken(userId, tokenType) {
 
 export function generateAccessToken(userId) {
   return {
-    access_token: jwt.sign({ sub: userId }, "", {
+    access_token: jwt.sign({ sub: userId }, config.JWT_SECRET, {
       algorithm: "HS256",
       expiresIn: "20days",
     }),
