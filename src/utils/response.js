@@ -1,7 +1,5 @@
 export function respond(res, statusCode, message, data = null) {
-  const successCodes = [200, 201]
-  if (successCodes.includes(statusCode)) {
-    return res.status(statusCode).json({ success: true, message, data })
-  }
-  return res.status(statusCode).json({ success: false, message, data });
+  const success = statusCode >= 200 && statusCode < 300; 
+  return res.status(statusCode).json({ success, message, data });
 }
+
