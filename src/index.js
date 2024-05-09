@@ -7,6 +7,7 @@ import { databaseConnection } from "./utils/database.js";
 import { logger } from "./utils/logger.js";
 import auth from "./modules/auth/route.js";
 import { respond } from "./utils/response.js";
+import { globalErrorHandler, routeNotFound } from "./middlewares/error.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,28 +24,9 @@ app.use(helmet());
 
 app.use("/v1/auth", auth);
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "Ecommerce API service is running...",
-  });
-});
+app.use(routeNotFound);
+app.use(globalErrorHandler)
 
-app.use("*", (req, res) => {
-  res.status(404).json({
-    success: false,
-    message: "Endpoint does not exist on this server",
-  });
-});
-
-app.use((err, req, res, next) => {
-  logger.error(err.message);
-  const statusCode = err.statusCode || 500;
-  if (err instanceof Joi.ValidationError) {
-    return respond(res, 400, false, err.message);
-  }
-  return respond(res, statusCode, false, "Internal Server Error");
-});
 
 app.listen(port, () => {
   logger.info(`Server is running on  port ${port}`);

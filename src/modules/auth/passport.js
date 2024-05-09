@@ -1,6 +1,8 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import config from "../../utils/config.js";
+import { repository } from "./repository.js";
+import { generateAccessToken } from "../../utils/generateToken.js";
 
 passport.use(
   new GoogleStrategy(
@@ -11,16 +13,14 @@ passport.use(
     },
     async function (profile, cb) {
       try {
-        const existingUser = "";
+        const existingUser = await repository.findUserByEmail(profile.email);
         if (!existingUser) {
-          /**
-           * create new User and generate jwt
-           */
+          const newUser = await repository.create()
+          const { access_token } = generateAccessToken(newUser.id)
+          return cb(null, access_token);
         }
-        /**
-         * generate jwt token
-         */
-        return cb(null, "token");
+        const { access_token } = generateAccessToken(existingUser.id)
+        return cb(null, access_token);
       } catch (err) {
         return cb(err, null);
       }

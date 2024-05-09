@@ -1,15 +1,24 @@
 import { randomBytes } from "crypto";
 import jwt from "jsonwebtoken";
-import { oneHour } from "./date-time.js";
 import config from "./config.js";
+import { oneHour, twoMonthsExpiry } from "./date-time.js";
 
-export function generateToken(userId, tokenType) {
+export function generateVerificationToken(userId) {
   return {
     userId: userId,
     token: randomBytes(16).toString("hex"),
-    token_type: tokenType,
+    token_type: "verify_account",
     expiresIn: oneHour,
   };
+}
+
+export function generateRefreshToken(userId){
+  return{
+    userId: userId,
+    token: randomBytes(16).toString("hex"),
+    token_type: "refreshToken",
+    expiresIn: twoMonthsExpiry
+  }
 }
 
 export function generateAccessToken(userId) {
@@ -19,4 +28,13 @@ export function generateAccessToken(userId) {
       expiresIn: "20days",
     }),
   };
+}
+
+export function generateResetPasswordToken(userId){
+  return {
+    userId: userId,
+    token: randomBytes(16).toString("hex"),
+    token_type: "reset_password",
+    expiresIn: oneHour,
+  }
 }
