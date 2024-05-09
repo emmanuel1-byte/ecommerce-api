@@ -80,9 +80,9 @@ export const Token = sequelize.define(
       allowNull: false,
     },
 
-    expires_in: {
+    expiresIn: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
     },
   },
   { timestamps: true, freezeTableName: true, indexes: [{ fields: ["token"] }] }
@@ -110,12 +110,15 @@ export const BlackList = sequelize.define(
 /** Hooks */
 User.beforeCreate(async function (user, options) {
   try {
-    return (user.password = await bcrypt.hash(user.password, 10));
+    user.password = await bcrypt.hash(user.password, 10);
   } catch (err) {
     logger.error(err.message);
   }
 });
 
 
+
+
+
 User.hasOne(Token, { foreignKey: "userId", onDelete: "CASCADE" }),
-  Token.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });
+Token.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });

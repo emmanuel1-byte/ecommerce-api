@@ -7,7 +7,7 @@ import config from "../utils/config.js";
 export function validateJwt(req, res, next) {
   const accessToken = req.headers.authorization.split(" ")[1];
   if (!accessToken) {
-    respond(res, 400, "Access token required!");
+    return respond(res, 400, "Access token required!");
   }
   jwt.verify(accessToken, config.JWT_SECRET, (err, payload) => {
     if (err) {
@@ -18,7 +18,7 @@ export function validateJwt(req, res, next) {
           "Your session has expired. Please log in again."
         );
       }
-      return respond(res, 401, false, "Unauthorized access. Please log in.");
+      return respond(res, 401, "Unauthorized access. Please log in.");
     }
     req.accessToken = accessToken
     req.userId = payload.sub;
@@ -31,7 +31,7 @@ export async function ensureUniqueUser(req, res, next) {
     const validatedData = await signUpSchema.validateAsync(req.body);
     const existingUser = await repository.findUserByEmail(validatedData.email);
     if (existingUser) {
-      return respond(res, 409, false, "Account already exist!");
+      return respond(res, 409, "Account already exist!");
     }
     next();
   } catch (err) {
@@ -47,7 +47,6 @@ export async function checkAccountVerificationStatus(req, res, next) {
       return respond(
         res,
         403,
-        false,
         "Account not verified. Please verify your account via email."
       );
     }

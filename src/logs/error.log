@@ -23,3 +23,23 @@
 {"level":"error","message":"token is not defined"}
 {"level":"error","message":"secretOrPrivateKey must have a value"}
 {"level":"error","message":"secretOrPrivateKey must have a value"}
+{"level":"error","message":"Cannot read properties of null (reading 'userId')"}
+{"level":"error","message":"Cannot read properties of null (reading 'userId')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'split')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'split')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'split')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'split')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'split')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'split')"}
+{"level":"error","message":"Invalid value Promise { undefined }"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'userId')"}
+{"level":"error","message":"Invalid value Promise { undefined }"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'userId')"}
+{"level":"error","message":"WHERE parameter \"token\" has invalid \"undefined\" value"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'userId')"}
+{"level":"error","message":"Cannot read properties of null (reading 'id')"}
+{"level":"error","message":"newUser is not defined"}
+{"level":"error","message":"Cannot read properties of null (reading 'token')"}
+{"level":"error","message":"\"password\" is required"}
+{"level":"error","message":"\"password\" is required"}
+{"level":"error","message":"Passwords do not match"}

@@ -1,3 +1,5 @@
-export function respond(res, statusCode, success, message, data = null) {
-  return res.status(statusCode).json({ success, message, data});
+export function respond(res, statusCode, message, data = null) {
+  const success = statusCode >= 200 && statusCode < 300; 
+  return res.status(statusCode).json({ success, message, data });
 }
+
