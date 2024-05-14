@@ -3,6 +3,7 @@ import { sequelize } from "../../utils/database.js";
 import { randomUUID } from "crypto";
 import bcrypt from "bcrypt";
 import { logger } from "../../utils/logger.js";
+import { Profile } from "../profile/model.js";
 
 export const User = sequelize.define(
   "User",
@@ -47,10 +48,6 @@ export const User = sequelize.define(
       allowNull: false,
     },
 
-    last_login: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
   },
   { timestamps: true, freezeTableName: true }
 );
@@ -107,7 +104,12 @@ export const BlackList = sequelize.define(
 );
 
 
-/** Hooks */
+
+/**
+ * Hashes the user's password before creating a new user record.
+ * This hook is executed automatically before a new user record is created.
+ * It ensures the password is securely stored by hashing it with bcrypt.
+ */
 User.beforeCreate(async function (user, options) {
   try {
     user.password = await bcrypt.hash(user.password, 10);
@@ -117,8 +119,30 @@ User.beforeCreate(async function (user, options) {
 });
 
 
+/**
+ * Hashes the user's password before updating it in the database.
+ * This hook is executed automatically before a user record is updated.
+ * It ensures the password is securely stored by hashing it with bcrypt.
+ */
+User.beforeUpdate(async function (user, options) {
+  try {
+    if (user.changed('password')) {
+      user.password = await bcrypt.hash(user.password, 10);
+    }
+  } catch (err) {
+    logger.error(err.message);
+  }
+});
 
 
 
+
+
+/**
+ * Establishes a one-to-one relationship between the User and Token models.
+ * When a User is deleted, the associated Token record will also be deleted.
+ * When a Token is deleted, the associated User record will also be deleted.
+ */
 User.hasOne(Token, { foreignKey: "userId", onDelete: "CASCADE" }),
-Token.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });
+  Token.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });
+

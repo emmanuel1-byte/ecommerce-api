@@ -43,3 +43,75 @@
 {"level":"error","message":"\"password\" is required"}
 {"level":"error","message":"\"password\" is required"}
 {"level":"error","message":"Passwords do not match"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":"error","message":"WHERE parameter \"email\" has invalid \"undefined\" value"}
+{"level":"error","message":"Cannot read properties of undefined (reading '0')"}
+{"level":"error","message":"WHERE parameter \"email\" has invalid \"undefined\" value"}
+{"level":"error","message":"Cannot read properties of undefined (reading '0')"}
+{"level":"error","message":"WHERE parameter \"email\" has invalid \"undefined\" value"}
+{"level":"error","message":"notNull Violation: User.email cannot be null"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":"error","message":"WHERE parameter \"email\" has invalid \"undefined\" value"}
+{"level":"error","message":"notNull Violation: User.email cannot be null"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":"error","message":"WHERE parameter \"email\" has invalid \"undefined\" value"}
+{"level":"error","message":"Cannot read properties of undefined (reading '0')"}
+{"level":"error","message":"WHERE parameter \"email\" has invalid \"undefined\" value"}
+{"level":"error","message":"picture is not defined"}
+{"level":"error","message":"WHERE parameter \"email\" has invalid \"undefined\" value"}
+{"level":"error","message":"picture is not defined"}
+{"level":"error","message":"WHERE parameter \"email\" has invalid \"undefined\" value"}
+{"level":"error","message":"data and salt arguments required"}
+{"level":"error","message":"Login sessions require session support. Did you forget to use `express-session` middleware?"}
+{"level":"error","message":"Login sessions require session support. Did you forget to use `express-session` middleware?"}
+{"level":"error","message":"Login sessions require session support. Did you forget to use `express-session` middleware?"}
+{"level":"error","message":"Login sessions require session support. Did you forget to use `express-session` middleware?"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'emails')"}
+{"level":"error","message":"notNull Violation: Token.userId cannot be null"}
+{"level":"error","message":"notNull Violation: Token.userId cannot be null"}
+{"level":"error","message":"notNull Violation: Token.userId cannot be null"}
+{"level":"error","message":"notNull Violation: Token.userId cannot be null"}
+{"level":"error","message":"notNull Violation: Token.userId cannot be null"}
+{"level":"error","message":"notNull Violation: Token.userId cannot be null"}
+{"level":"error","message":"notNull Violation: Token.userId cannot be null"}
+{"level":"error","message":"data and salt arguments required"}
+{"level":"error","message":"notNull Violation: Token.userId cannot be null"}
+{"level":"error","message":"notNull Violation: Token.userId cannot be null"}
+{"level":"error","message":"notNull Violation: Token.userId cannot be null"}
+{"level":"error","message":"notNull Violation: Token.userId cannot be null"}
+{"level":"error","message":"connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'data')"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'data')"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'data')"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'data')"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'data')"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'data')"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'data')"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'data')"}
+{"level":"error","message":"Socket already opened"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'data')"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'data')"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"column \"nan\" does not exist"}
+{"level":"error","message":"Socket already opened"}
+{"level":"error","message":"Socket already opened"}
+{"level":"error","message":"Socket already opened"}
+{"level":"error","message":"Socket already opened"}
