@@ -2,12 +2,12 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import helmet from "helmet";
-import Joi from "joi";
 import { databaseConnection } from "./utils/database.js";
 import { logger } from "./utils/logger.js";
 import auth from "./modules/auth/route.js";
 import { respond } from "./utils/response.js";
 import { globalErrorHandler, routeNotFound } from "./middlewares/error.js";
+import admin from "./modules/admin/route.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,9 +20,16 @@ app.use(cookieParser());
 app.use(
   cors({ methods: ["POST", "PUT", "DELETE", "GET", "PATCH"], origin: "*" })
 );
+
 app.use(helmet());
 
+
+app.get('/', (req, res)=>{
+  return respond(res, 200, "Welcome to the API")
+})
+
 app.use("/v1/auth", auth);
+app.use("/v1/admin/users", admin)
 
 app.use(routeNotFound);
 app.use(globalErrorHandler)
