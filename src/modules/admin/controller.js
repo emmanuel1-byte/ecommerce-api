@@ -4,10 +4,14 @@ import { respond } from "../../utils/response.js";
 import { setCookie } from "../../helpers/cookieHelper.js";
 import authRepository from '../auth/repository.js'
 import { repository } from "./repository.js";
-import { createUserSchema, loginSchema, paginationSchema, updateUserSchema, userParams } from "./schema.js";
+import {
+    createUserSchema, loginSchema, paginationSchema,
+    updateUserSchema, userParams
+} from "./schema.js";
+
 
 /**
- * Logs in a user using username and password.
+ * Logs in an admin using username and password.
  * @param {import('express').Request} req - The Express request object.
  * @param {import('express').Response} res - The Express response object.
  * @param {import('express').NextFunction} next - The Express next function.

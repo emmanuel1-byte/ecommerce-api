@@ -1,8 +1,14 @@
 import { respond } from "../../utils/response.js";
 import { sendResetPasswordEmail, sendVerifcationEmail } from "../../services/email/email.js";
-import { generateAccessToken, generateVerificationToken, generateRefreshToken, generateResetPasswordToken } from "../../utils/generateToken.js";
-import repository  from "./repository.js";
-import { forgotPasswordSchema, loginSchema, resetPasswordSchema, signUpSchema, tokenSchema, } from "./schema.js";
+import {
+  generateAccessToken, generateVerificationToken,
+  generateRefreshToken, generateResetPasswordToken
+} from "../../utils/generateToken.js";
+import repository from "./repository.js";
+import {
+  forgotPasswordSchema, loginSchema,
+  resetPasswordSchema, signUpSchema, tokenSchema,
+} from "./schema.js";
 import bcrypt from "bcrypt";
 import { getCookie, setCookie } from "../../helpers/cookieHelper.js";
 
@@ -40,8 +46,8 @@ export async function signup(req, res, next) {
  */
 export async function verifyAccount(req, res, next) {
   try {
-    const tokenPayload  = await tokenSchema.validateAsync(req.query);
-    const tokenRecord = await repository.findToken(tokenPayload .token);
+    const tokenPayload = await tokenSchema.validateAsync(req.query);
+    const tokenRecord = await repository.findToken(tokenPayload.token);
     if (!tokenRecord) respond(res, 404, "Token does not exist");
     await repository.markAccountAsVerified(tokenRecord.userId);
     await repository.deleteToken(tokenRecord.token);
@@ -84,14 +90,14 @@ export async function login(req, res, next) {
  * @returns {Promise<void>} - A promise that resolves after handling the Google login flow.
  * @throws {Error} - Any error that occurs during Google login flow handling.
  */
-export async function google(req, res, next){
-  try{
+export async function google(req, res, next) {
+  try {
     const refreshToken = generateRefreshToken(req.user.userId)
     const access_token = req.user.access_token
     await repository.createToken(refreshToken)
     setCookie(res, refreshToken.token)
     return respond(res, 200, "Login successfull", { access_token });
-  }catch(err){
+  } catch (err) {
     next(err)
   }
 }
@@ -151,7 +157,7 @@ export async function forgotPassword(req, res, next) {
  */
 export async function verifyPasswordResetToken(req, res, next) {
   try {
-    const tokenPayload  = await tokenSchema.validateAsync(req.query)
+    const tokenPayload = await tokenSchema.validateAsync(req.query)
     const existingToken = await repository.findToken(tokenPayload.token)
     if (!existingToken) return respond(res, 404, "Token does not exist");
     await repository.deleteToken(existingToken.token)

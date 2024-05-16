@@ -21,28 +21,14 @@ const transport = nodemailer.createTransport({
 
 
 
-/**
- * Emits an "accountVerificationEmail" event with the provided request, email, and token.
- *
- * @param {Object} req - The HTTP request object.
- * @param {string} email - The email address to send the verification email to.
- * @param {string} token - The token to include in the verification email link.
- */
+
 export function sendVerifcationEmail(req, email, token) {
   emailEvent.emit("accountVerificationEmail", req, email, token)
 }
 
 
-/**
- * Sends an email to a user to confirm their account by providing a verification token.
- *
- * @param {Object} req - The HTTP request object.
- * @param {string} email - The email address of the user to send the verification email to.
- * @param {string} token - The verification token to include in the email link.
- */
 emailEvent.on(
-  "accountVerificationEmail",
-  async (req, email, token) => {
+  "accountVerificationEmail", async (req, email, token) => {
     try {
       const info = await transport.sendMail({
         from: config.GOOGLE.USER,
@@ -58,28 +44,15 @@ emailEvent.on(
 );
 
 
-/**
- * Sends a reset password email to the specified email address.
- *
- * @param {Object} req - The HTTP request object.
- * @param {string} email - The email address to send the reset password email to.
- * @param {string} token - The password reset token to include in the email link.
- */
+
+
 export function sendResetPasswordEmail(req, email, token) {
   emailEvent.emit("resetPasswordEmail", req, email, token)
 }
 
 
-/**
- * Sends a reset password email to the specified email address.
- *
- * @param {Object} req - The HTTP request object.
- * @param {string} email - The email address to send the reset password email to.
- * @param {string} token - The password reset token to include in the email link.
- */
 emailEvent.on(
-  "resetPasswordEmail",
-  async function ResetPasswordEmail(req, email, token) {
+  "resetPasswordEmail", async (req, email, token) => {
     try {
       const info = await transport.sendMail({
         from: config.GOOGLE.USER,

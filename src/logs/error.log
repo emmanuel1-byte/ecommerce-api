@@ -115,3 +115,10 @@
 {"level":"error","message":"Socket already opened"}
 {"level":"error","message":"Socket already opened"}
 {"level":"error","message":"Socket already opened"}
+{"level":"error","message":"res.json(...).bind is not a function"}
+{"level":"error","message":"consoe is not defined"}
+{"level":"error","message":"body is not defined"}
+{"level":"error","message":"body is not defined"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'json')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'json')"}
+{"level":"error","message":"Cannot set headers after they are sent to the client"}
