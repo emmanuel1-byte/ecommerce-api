@@ -26,7 +26,7 @@ async function create(data) {
 
       await Profile.create({
         userId: user.id,
-        profile_picture: data.profile_picture || "",
+        profile_picture: data.profile_picture || sequelize.literal('profile_picture'),
         fullname: data.fullname,
       }, { transaction: t })
 
@@ -51,6 +51,16 @@ async function findUserByEmail(email) {
     logger.error(err.message);
   }
 }
+
+async function findUserById(userId) {
+  try {
+    return await User.findByPk(userId)
+  } catch (err) {
+    logger.error(err.message);
+  }
+}
+
+
 
 /**
  * Updates the password for a user with the given email address.
@@ -92,6 +102,7 @@ async function createToken(data) {
     logger.error(err.message);
   }
 }
+
 
 /**
  * Finds a token in the database.
@@ -154,6 +165,7 @@ async function createBlackList(token) {
 const repository = {
   create,
   findUserByEmail,
+  findUserById,
   updatePassword,
   findToken,
   markAccountAsVerified,

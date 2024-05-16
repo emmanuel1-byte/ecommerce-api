@@ -3,7 +3,7 @@ import { sequelize } from "../../utils/database.js";
 import { randomUUID } from "crypto";
 import bcrypt from "bcrypt";
 import { logger } from "../../utils/logger.js";
-import { Profile } from "../profile/model.js";
+
 
 export const User = sequelize.define(
   "User",
