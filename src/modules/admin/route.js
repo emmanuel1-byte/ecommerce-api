@@ -1,11 +1,11 @@
 import express from 'express'
 import {
     createUser, deleteUser, getPaginatedListOfUsers,
-    login, updateUser
+     updateUser
 } from './controller.js'
 const admin = express.Router()
 
-admin.post('/login', login)
+
 
 admin.post('/', createUser)
 

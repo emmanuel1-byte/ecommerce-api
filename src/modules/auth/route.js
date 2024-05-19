@@ -1,6 +1,7 @@
 import express from 'express'
 import passport from './passport.js'
 import {
+    adminLogin,
     forgotPassword, google, login, logout, refreshTokens,
     resetPassword, signup, verifyAccount, verifyPasswordResetToken
 } from './controller.js'
@@ -13,6 +14,8 @@ const auth = express.Router()
 auth.post('/signup', ensureUniqueUser, signup)
 
 auth.post('/login', checkAccountVerificationStatus, login)
+
+auth.post('/admin/login', adminLogin)
 
 auth.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
 
