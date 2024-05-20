@@ -4,6 +4,10 @@ dotenv.config()
 const config = {
     JWT_SECRET: process.env.JWT_SECRET,
     DATABASE_URI: process.env.DATABASE_URI,
+    PAYSTACK: {
+        SECRETkEY: process.env.PAYSTACK_SECRET_KEY
+
+    },
     GOOGLE: {
         CLIENTID: process.env.GOOGLE_CLIENTID,
         CLIENTSECRET: process.env.GOOGLE_CLIENTSECRET,

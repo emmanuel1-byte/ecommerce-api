@@ -63,7 +63,7 @@ async function create(data) {
  * @param {number} data.limit - The number of records to return per page.
  * @returns {Promise<{ data: User[], count: number }>} - An object containing the paginated user data and the total count of users.
  */
-async function readAll(data) {
+async function fetchAllUser(data) {
     try {
         return {
             data: await User.findAll({ offset: (data.page - 1) * data.limit, limit: data.limit }),
@@ -104,7 +104,7 @@ async function update(data) {
  * @param {number} userId - The ID of the user to delete.
  * @returns {Promise<number>} - The number of rows affected by the delete operation.
  */
-async function delete_(userId) {
+async function deleteById(userId) {
     try {
         return await User.destroy({ where: { id: userId }, force: true })
     } catch (err) {
@@ -118,7 +118,7 @@ export const repository = {
     findByUsername,
     create,
     update,
-    readAll,
+    fetchAllUser,
     findById,
-    delete_
+    deleteById
 }

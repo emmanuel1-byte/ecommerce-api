@@ -1,38 +1,12 @@
-import bcrypt from "bcrypt";
-import { generateAccessToken, generateRefreshToken } from "../../utils/generateToken.js";
 import { respond } from "../../utils/response.js";
-import { setCookie } from "../../helpers/cookieHelper.js";
-import authRepository from '../auth/repository.js'
 import { repository } from "./repository.js";
 import {
-    createUserSchema, loginSchema, paginationSchema,
+    createUserSchema, paginationSchema,
     updateUserSchema, userParams
 } from "./schema.js";
 
 
-/**
- * Logs in an admin using username and password.
- * @param {import('express').Request} req - The Express request object.
- * @param {import('express').Response} res - The Express response object.
- * @param {import('express').NextFunction} next - The Express next function.
- * @returns {Promise<void>} - A promise that resolves after handling the login request.
- * @throws {Error} - Any error that occurs during login.
- */
-export async function login(req, res, next) {
-    try {
-        const validatedData = await loginSchema.validateAsync(req.body)
-        const user = await repository.findByUsername(validatedData.username)
-        if (!user || (await bcrypt.compare(validatedData.password, user.password)))
-            return respond(res, 401, "Invalid credentials");
-        const { access_token } = generateAccessToken(user.id)
-        const refreshToken = generateRefreshToken(user.id);
-        await authRepository.createToken(refreshToken)
-        setCookie(refreshToken.token)
-        return respond(res, 200, "Login successfull", { access_token });
-    } catch (err) {
-        next(err)
-    }
-}
+
 
 /**
  * Creates a new user.
@@ -65,7 +39,7 @@ export async function getPaginatedListOfUsers(req, res, next) {
     try {
         const paginationPayload = await paginationSchema.validateAsync(req.query)
         const { page, limit } = paginationPayload
-        const user = await repository.readAll(paginationPayload);
+        const user = await repository.fetchAllUser(paginationPayload);
         return respond(res, 200, "User's retrieved", {
             user: user.data,
             pagination: {
@@ -112,7 +86,7 @@ export async function updateUser(req, res, next) {
 export async function deleteUser() {
     try {
         const requestParam = await userParams.validateAsync(req.body)
-        const user = repository.update(requestParam.userId)
+        const user = repository.deleteById(requestParam.userId)
         if (!user) return respond(res, 404, "User not found")
         return respond(res, 200, "User deleted succesfully", { user })
     } catch (err) {

@@ -1,11 +1,6 @@
 import Joi from "joi";
 
 
- 
-export const loginSchema = Joi.object({
-    username: Joi.string().required(),
-    password: Joi.string().min(5).max(256).required()
-})
 
 
 export const createUserSchema = Joi.object({

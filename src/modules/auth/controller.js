@@ -6,6 +6,7 @@ import {
 } from "../../utils/generateToken.js";
 import repository from "./repository.js";
 import {
+  adminLoginSchema,
   forgotPasswordSchema, loginSchema,
   resetPasswordSchema, signUpSchema, tokenSchema,
 } from "./schema.js";
@@ -79,6 +80,30 @@ export async function login(req, res, next) {
     return respond(res, 200, "Login successfull", { access_token });
   } catch (err) {
     next(err);
+  }
+}
+
+/**
+ * Logs in an admin using username and password.
+ * @param {import('express').Request} req - The Express request object.
+ * @param {import('express').Response} res - The Express response object.
+ * @param {import('express').NextFunction} next - The Express next function.
+ * @returns {Promise<void>} - A promise that resolves after handling the login request.
+ * @throws {Error} - Any error that occurs during login.
+ */
+export async function adminLogin(req, res, next) {
+  try {
+    const validatedData = await adminLoginSchema.validateAsync(req.body)
+    const user = await repository.findByUsername(validatedData.username)
+    if (!user || (await bcrypt.compare(validatedData.password, user.password)))
+      return respond(res, 401, "Invalid credentials");
+    const { access_token } = generateAccessToken(user.id)
+    const refreshToken = generateRefreshToken(user.id);
+    await repository.createToken(refreshToken)
+    setCookie(refreshToken.token)
+    return respond(res, 200, "Login successfull", { access_token });
+  } catch (err) {
+    next(err)
   }
 }
 
