@@ -70,4 +70,4 @@ This project is a full-fledged e-commerce platform built with Node.js, Express.j
 
 ## API Documentation
 ### Postman 
--  [postman]('https://documenter.getpostman.com/view/32396066/2sA3QniZqy)
+-  [postman]('https://documenter.getpostman.com/view/32396066/2sA3QniZqy')
