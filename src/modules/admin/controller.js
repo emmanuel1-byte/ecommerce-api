@@ -1,8 +1,9 @@
 import { respond } from "../../utils/response.js";
 import { repository } from "./repository.js";
+import authRespository from "../auth/repository.js";
 import {
     createUserSchema, paginationSchema,
-    updateUserSchema, userParams
+    updateUserSchema, userSchema
 } from "./schema.js";
 
 
@@ -19,8 +20,8 @@ import {
 export async function createUser(req, res, next) {
     try {
         const validatedData = await createUserSchema.validateAsync(req.body)
-        const newUser = await repository.create(validatedData)
-        return respond(res, 201, "User created succesfully", { user: newUser })
+        await authRespository.create(validatedData)
+        return respond(res, 201, "User created succesfully")
     } catch (err) {
         next(err)
     }
@@ -37,8 +38,8 @@ export async function createUser(req, res, next) {
  */
 export async function getPaginatedListOfUsers(req, res, next) {
     try {
-        const paginationPayload = await paginationSchema.validateAsync(req.query)
-        const { page, limit } = paginationPayload
+        const params = await paginationSchema.validateAsync(req.query)
+        const { page, limit } = params
         const user = await repository.fetchAllUser(paginationPayload);
         return respond(res, 200, "User's retrieved", {
             user: user.data,
@@ -64,31 +65,35 @@ export async function getPaginatedListOfUsers(req, res, next) {
  */
 export async function updateUser(req, res, next) {
     try {
-        const requestParam = await userParams.validateAsync(req.params)
-        const existingUser = await repository.findById(requestParam.userId)
-        if (!existingUser) if (!user) return respond(res, 404, "User not found")
+        const params = await userSchema.validateAsync(req.params)
+        const existingUser = await repository.findById(params.userId)
+        if (!existingUser) return respond(res, 404, "User not found")
         const validatedData = await updateUserSchema.validateAsync(req.body)
-        const user = repository.update(requestParam.userId, validatedData)
-        return respond(res, 201, "User created succesfully", { user })
+        const user = await repository.update(existingUser.id, validatedData)
+        return respond(res, 201, "User updated succesfully", { user })
     } catch (err) {
         next(err)
     }
 }
 
+
+
 /**
- * Deletes a user.
- * @param {import('express').Request} req - The Express request object.
- * @param {import('express').Response} res - The Express response object.
- * @param {import('express').NextFunction} next - The Express next function.
- * @returns {Promise<void>} - A promise that resolves after handling the update user request.
- * @throws {Error} - Any error that occurs during user update.
+ * Deletes a user by their ID.
+ *
+ * @param {Object} req - The HTTP request object.
+ * @param {Object} req.params - The request parameters.
+ * @param {string} req.params.userId - The ID of the user to delete.
+ * @param {Object} res - The HTTP response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the user has been deleted.
  */
-export async function deleteUser() {
+export async function deleteUser(req, res, next) {
     try {
-        const requestParam = await userParams.validateAsync(req.body)
-        const user = repository.deleteById(requestParam.userId)
+        const params = await userSchema.validateAsync(req.params)
+        const user = repository.deleteById(params.userId)
         if (!user) return respond(res, 404, "User not found")
-        return respond(res, 200, "User deleted succesfully", { user })
+        return respond(res, 200, "User deleted succesfully")
     } catch (err) {
         next(err)
     }

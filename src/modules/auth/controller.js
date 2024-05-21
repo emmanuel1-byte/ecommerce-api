@@ -6,7 +6,6 @@ import {
 } from "../../utils/generateToken.js";
 import repository from "./repository.js";
 import {
-  adminLoginSchema,
   forgotPasswordSchema, loginSchema,
   resetPasswordSchema, signUpSchema, tokenSchema,
 } from "./schema.js";
@@ -47,11 +46,11 @@ export async function signup(req, res, next) {
  */
 export async function verifyAccount(req, res, next) {
   try {
-    const tokenPayload = await tokenSchema.validateAsync(req.query);
-    const tokenRecord = await repository.findToken(tokenPayload.token);
+    const params = await tokenSchema.validateAsync(req.query);
+    const token= await repository.findToken(params.token);
     if (!tokenRecord) respond(res, 404, "Token does not exist");
-    await repository.markAccountAsVerified(tokenRecord.userId);
-    await repository.deleteToken(tokenRecord.token);
+    await repository.markAccountAsVerified(token.userId);
+    await repository.deleteToken(token.token);
     respond(res, 200, "Account verified");
   } catch (err) {
     next(err);
@@ -83,29 +82,6 @@ export async function login(req, res, next) {
   }
 }
 
-/**
- * Logs in an admin using username and password.
- * @param {import('express').Request} req - The Express request object.
- * @param {import('express').Response} res - The Express response object.
- * @param {import('express').NextFunction} next - The Express next function.
- * @returns {Promise<void>} - A promise that resolves after handling the login request.
- * @throws {Error} - Any error that occurs during login.
- */
-export async function adminLogin(req, res, next) {
-  try {
-    const validatedData = await adminLoginSchema.validateAsync(req.body)
-    const user = await repository.findByUsername(validatedData.username)
-    if (!user || (await bcrypt.compare(validatedData.password, user.password)))
-      return respond(res, 401, "Invalid credentials");
-    const { access_token } = generateAccessToken(user.id)
-    const refreshToken = generateRefreshToken(user.id);
-    await repository.createToken(refreshToken)
-    setCookie(refreshToken.token)
-    return respond(res, 200, "Login successfull", { access_token });
-  } catch (err) {
-    next(err)
-  }
-}
 
 /**
  * Handles Google login flow.
@@ -182,8 +158,8 @@ export async function forgotPassword(req, res, next) {
  */
 export async function verifyPasswordResetToken(req, res, next) {
   try {
-    const tokenPayload = await tokenSchema.validateAsync(req.query)
-    const existingToken = await repository.findToken(tokenPayload.token)
+    const params = await tokenSchema.validateAsync(req.query)
+    const existingToken = await repository.findToken(params.token)
     if (!existingToken) return respond(res, 404, "Token does not exist");
     await repository.deleteToken(existingToken.token)
     return respond(res, 200, "Token is valid")
@@ -226,8 +202,8 @@ export async function logout(req, res, next) {
   try {
     const refreshToken = getCookie(req)
     const accessToken = req.accessToken
-    await repository.createBlackList(refreshToken)
-    await repository.deleteToken(accessToken)
+    await repository.createBlackList(accessToken)
+    await repository.deleteToken(refreshToken)
     return respond(res, 200, "Logout succesfull")
   } catch (err) {
     next(err);

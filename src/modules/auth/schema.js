@@ -14,11 +14,6 @@ export const loginSchema = Joi.object({
     password: Joi.string().min(5).max(256).required()
 })
 
-export const adminLoginSchema = Joi.object({
-    username: Joi.string().required(),
-    password: Joi.string().min(5).max(256).required()
-})
-
 
 
 export const tokenSchema = Joi.object({

@@ -29,6 +29,7 @@ export function validateJwt(req, res, next) {
 }
 
 
+
 /**
  * Middleware function that ensures the user being registered is unique by checking their email.
  *

@@ -3,20 +3,6 @@ import { logger } from "../../utils/logger.js";
 import { User } from "../auth/model.js";
 
 
-/**
- * Retrieves a user by their username.
- *
- * @param {string} username - The username to search for.
- * @returns {Promise<User|null>} - The found user, or null if not found.
- */
-async function findByUsername(username) {
-    try {
-        return await User.findOne({ where: { username: username } })
-    } catch (err) {
-        logger.error(err.message)
-    }
-}
-
 
 /**
  * Retrieves a user by their unique identifier.
@@ -32,28 +18,6 @@ async function findById(userId) {
     }
 }
 
-/**
- * Creates a new user in the database.
- *
- * @param {Object} data - The user data to create.
- * @param {string} data.username - The username of the new user.
- * @param {string} data.email - The email address of the new user.
- * @param {string} data.password - The password of the new user.
- * @param {string} data.role - The role of the new user.
- * @returns {Promise<User>} - The newly created user.
- */
-async function create(data) {
-    try {
-        return await User.create({
-            username: data.username,
-            email: data.email,
-            password: password,
-            role: data.role
-        })
-    } catch (err) {
-        logger.error(err.message)
-    }
-}
 
 /**
  * Retrieves a paginated list of all users.
@@ -66,7 +30,11 @@ async function create(data) {
 async function fetchAllUser(data) {
     try {
         return {
-            data: await User.findAll({ offset: (data.page - 1) * data.limit, limit: data.limit }),
+            data: await User.findAll({
+                offset: (data.page - 1) * data.limit, limit: data.limit, attributes: [
+                    "id", "email", "role", "account_status", "verified", "createdAt", "updatedAt"
+                ]
+            }),
             count: await User.count()
         }
     } catch (err) {
@@ -74,25 +42,30 @@ async function fetchAllUser(data) {
     }
 }
 
+
 /**
- * Updates a user's information in the database.
+ * Updates a user's email, password, and role in the database.
  *
- * @param {Object} data - The user data to update.
- * @param {string} data.username - The new username for the user.
- * @param {string} data.email - The new email address for the user.
- * @param {string} data.password - The new password for the user.
- * @param {string} data.role - The new role for the user.
- * @returns {Promise<number>} The number of updated records.
+ * @param {number} userId - The ID of the user to update.
+ * @param {object} data - An object containing the updated user data.
+ * @param {string} [data.email] - The new email address for the user.
+ * @param {string} [data.password] - The new password for the user.
+ * @param {string} [data.role] - The new role for the user.
+ * @returns {Promise<object[]>} - An array of sanitized user records, with the password field removed.
  */
-async function update(data) {
+async function update(userId, data) {
     try {
-        const [updatedRows, updateRecords] = User.update({
-            username: data.username || sequelize.literal("username"),
+        const [updatedRows, updateRecords] = await User.update({
             email: data.email || sequelize.literal("email"),
             password: data.password || sequelize.literal("password"),
             role: data.role || sequelize.literal("role")
+        }, { where: { id: userId }, returning: true })
+
+        const sanitizedRecords = updateRecords.map(record => {
+            const { password, ...sanitizedRecords } = record.get({ plain: true })
+            return sanitizedRecords
         })
-        return updateRecords
+        return sanitizedRecords
     } catch (err) {
         logger.error(err.message)
     }
@@ -115,8 +88,6 @@ async function deleteById(userId) {
  * Provides a set of repository functions for managing users in the admin module.
  */
 export const repository = {
-    findByUsername,
-    create,
     update,
     fetchAllUser,
     findById,
