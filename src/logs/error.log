@@ -184,3 +184,42 @@
 {"level":"error","message":"\"userId\" is required"}
 {"level":"error","message":"WHERE parameter \"token\" has invalid \"undefined\" value"}
 {"level":"error","message":"WHERE parameter \"token\" has invalid \"undefined\" value"}
+{"level":"error","message":"paginationPayload is not defined"}
+{"level":"error","message":"\"profileId\" is required"}
+{"level":"error","message":"include.model.getTableName is not a function"}
+{"level":"error","message":"The \"path\" argument must be of type string. Received an instance of Object"}
+{"level":"error","message":"The \"path\" argument must be of type string. Received an instance of Object"}
+{"level":"error","message":"The \"path\" argument must be of type string. Received an instance of Object"}
+{"level":"error","message":"logger.errored is not a function"}
+{"level":"error"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'url')"}
+{"level":"error","message":"options is not defined"}
+{"level":"error","message":"The \"iterable\" argument must be an instance of Iterable. Received an instance of Object"}
+{"level":"error","message":"The \"iterable\" argument must be an instance of Iterable. Received an instance of Object"}
+{"level":"error","message":"The \"iterable\" argument must be an instance of Iterable. Received an instance of Object"}
+{"level":"error","message":"The \"iterable\" argument must be an instance of Iterable. Received an instance of Object"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'buffer')"}
+{"level":"error","message":"uploadToCloudinary is not defined"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'url')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'buffer')"}
+{"level":"error","message":"The \"iterable\" argument must be an instance of Iterable. Received undefined"}
+{"level":"error","message":"The \"iterable\" argument must be an instance of Iterable. Received undefined"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'mimetype')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'originalname')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'originalname')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'originalname')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'originalname')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'buffer')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'buffer')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'buffer')"}
+{"level":"error","message":"profile is not defined"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'buffer')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'buffer')"}
+{"level":"error","message":"Request Timeout"}
+{"level":"error","message":"err is not defined"}
+{"level":"error","message":"Request Timeout"}
+{"level":"error","message":"Request Timeout"}
+{"level":"error","message":"Request Timeout"}
+{"level":"error","message":"Request Timeout"}
+{"level":"error","message":"req is not defined"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'url')"}

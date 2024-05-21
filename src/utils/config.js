@@ -1,6 +1,16 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
+/**
+ * Defines the configuration settings for the application, including:
+ * - JWT secret key
+ * - Database connection URI
+ * - Paystack payment gateway settings
+ * - Google OAuth2 settings
+ * - Cloudinary cloud storage settings
+ *
+ * These settings are loaded from environment variables.
+ */
 const config = {
     JWT_SECRET: process.env.JWT_SECRET,
     DATABASE_URI: process.env.DATABASE_URI,

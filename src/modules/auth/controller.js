@@ -1,5 +1,5 @@
 import { respond } from "../../utils/response.js";
-import { sendResetPasswordEmail, sendVerifcationEmail } from "../../services/email/email.js";
+import { sendResetPasswordEmail, sendVerifcationEmail } from "../../services/email/nodemailer.js";
 import {
   generateAccessToken, generateVerificationToken,
   generateRefreshToken, generateResetPasswordToken
@@ -10,7 +10,7 @@ import {
   resetPasswordSchema, signUpSchema, tokenSchema,
 } from "./schema.js";
 import bcrypt from "bcrypt";
-import { getCookie, setCookie } from "../../helpers/cookieHelper.js";
+import { getCookie, setCookie } from "../../helpers/cookie.js";
 
 
 

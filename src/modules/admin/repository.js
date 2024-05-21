@@ -19,19 +19,19 @@ async function findById(userId) {
 }
 
 
+
 /**
- * Retrieves a paginated list of all users.
+ * Fetches all users with pagination.
  *
- * @param {Object} data - The pagination data.
- * @param {number} data.page - The current page number.
- * @param {number} data.limit - The number of records to return per page.
- * @returns {Promise<{ data: User[], count: number }>} - An object containing the paginated user data and the total count of users.
+ * @param {number} page - The page number to fetch.
+ * @param {number} limit - The number of users to fetch per page.
+ * @returns {Promise<{ data: User[], count: number }>} - An object containing the fetched users and the total count of users.
  */
-async function fetchAllUser(data) {
+async function fetchAllUser(page, limit) {
     try {
         return {
             data: await User.findAll({
-                offset: (data.page - 1) * data.limit, limit: data.limit, attributes: [
+                offset: (page - 1) * limit, limit: limit, attributes: [
                     "id", "email", "role", "account_status", "verified", "createdAt", "updatedAt"
                 ]
             }),

@@ -1,5 +1,5 @@
 import multer from 'multer'
-import { respond } from '../utils/response';
+import { respond } from '../utils/response.js';
 
 const storage = multer.memoryStorage()
 
@@ -23,14 +23,25 @@ export async function handlefileSizeLimitError(err, req, res, next) {
     }
 }
 
-function fileFilter(req, res, next) {
-    const allowedMimes = ["image/jpeg", "image/png"].map((mime) => { return mime })
+/**
+ * Middleware function to filter uploaded files based on allowed file extensions.
+ *
+ * This middleware function is used to validate the file extension of an uploaded file.
+ * It checks if the file extension is one of the allowed extensions (currently "jpeg" and "png").
+ * If the file extension is not allowed, it responds with a 415 Unsupported Media Type error.
+ * If the file extension is allowed, it calls the next middleware function.
+ *
+ * @param {Object} req - The Express request object.
+ * @param {Object} res - The Express response object.
+ * @param {Function} next - The next middleware function in the stack.
+ */
+export function fileFilter(req, res, next) {
     try {
-        if (!req.file) return respond(res, 400, "Resume file required")
-
-        if (req.file.mimetype !== allowedMimes)
-            return respond(res, 415, "Invalid file format image file expected!")
-
+        const allowedExtensions = ["jpeg", "png"]
+        const fileExtension = req.file.originalname.split(".").pop().toLowerCase();
+        if (!allowedExtensions.includes(fileExtension)) {
+            return respond(res, 415, 'Invalid file tyoe')
+        }
         next()
     } catch (err) {
         next(err)

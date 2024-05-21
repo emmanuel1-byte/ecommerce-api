@@ -8,6 +8,7 @@ import auth from "./modules/auth/route.js";
 import { respond } from "./utils/response.js";
 import { globalErrorHandler, routeNotFound } from "./middlewares/error.js";
 import admin from "./modules/admin/route.js";
+import profile from "./modules/profile/route.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -30,6 +31,7 @@ app.get('/', (req, res)=>{
 
 app.use("/v1/auth", auth);
 app.use("/v1/admin/users", admin)
+app.use('/v1/profile', profile)
 
 app.use(routeNotFound);
 app.use(globalErrorHandler)

@@ -9,6 +9,4 @@ export const userSchema = Joi.object({
     userId: Joi.string().uuid().required()
 })
 
-export const profileSchema = Joi.object({
-    profileId: Joi.string().uuid().required()
-})
+
