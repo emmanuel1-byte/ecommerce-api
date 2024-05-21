@@ -40,7 +40,7 @@ export async function getPaginatedListOfUsers(req, res, next) {
     try {
         const params = await paginationSchema.validateAsync(req.query)
         const { page, limit } = params
-        const user = await repository.fetchAllUser(paginationPayload);
+        const user = await repository.fetchAllUser(page, limit);
         return respond(res, 200, "User's retrieved", {
             user: user.data,
             pagination: {

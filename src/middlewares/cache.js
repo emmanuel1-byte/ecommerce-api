@@ -1,5 +1,5 @@
 import { createClient } from 'redis'
-const client = await createClient()
+export const client = await createClient()
     .on('err', (err) => logger.error(err.message))
     .connect()
 import { respond } from '../utils/response.js'
@@ -47,7 +47,7 @@ function setCache(req, res) {
                 logger.error(err.message)
             }
         }
-        logger.info('Cache miss for' + req.originalUrl)
+        logger.info('Cache miss for ' + req.originalUrl)
         return originalJson(body)
     }
 }
@@ -62,6 +62,6 @@ function setCache(req, res) {
  * @returns {Object} - The response object with the cached data.
  */
 function getCache(req, res, cacheData) {
-    logger.info('Cache hit for' + req.originalUrl)
+    logger.info('Cache hit for ' + req.originalUrl)
     return respond(res, 200, "User's retrieved", JSON.parse(cacheData))
 }
