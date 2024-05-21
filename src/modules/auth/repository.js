@@ -26,7 +26,7 @@ async function create(data) {
 
       await Profile.create({
         userId: user.id,
-        profile_picture: data.profile_picture || sequelize.literal('profile_picture'),
+        profile_picture: data.profile_picture || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y',
         fullname: data.fullname,
       }, { transaction: t })
 
@@ -159,6 +159,14 @@ async function createBlackList(token) {
   }
 }
 
+async function findBlackListedToken(token) {
+  try {
+    return await BlackList.findOne({ where: { token: token } })
+  } catch (err) {
+    logger.error(err.message);
+  }
+}
+
 /**
  * Provides a set of repository functions for the auth module.
  */
@@ -171,7 +179,8 @@ const repository = {
   markAccountAsVerified,
   deleteToken,
   createToken,
-  createBlackList
+  createBlackList,
+  findBlackListedToken
 };
 
 export default repository

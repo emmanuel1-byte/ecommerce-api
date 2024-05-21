@@ -122,3 +122,65 @@
 {"level":"error","message":"Cannot read properties of undefined (reading 'json')"}
 {"level":"error","message":"Cannot read properties of undefined (reading 'json')"}
 {"level":"error","message":"Cannot set headers after they are sent to the client"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'split')"}
+{"level":"error","message":"accessToken is not defined"}
+{"level":"error","message":"accessToken is not defined"}
+{"level":"error","message":"accessToken is not defined"}
+{"level":"error","message":"accessToken is not defined"}
+{"level":"error","message":"accessToken is not defined"}
+{"level":"error","message":"respond is not defined"}
+{"level":"error","message":"Cannot set headers after they are sent to the client"}
+{"level":"error","message":"Cannot set headers after they are sent to the client"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"Cannot set headers after they are sent to the client"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"Cannot set headers after they are sent to the client"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"Cannot set headers after they are sent to the client"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"Cannot set headers after they are sent to the client"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"Cannot set headers after they are sent to the client"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"Cannot set headers after they are sent to the client"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"Cannot set headers after they are sent to the client"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"Cannot set headers after they are sent to the client"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"password is not defined"}
+{"level":"error","message":"column \"username\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'data')"}
+{"level":"error","message":"column \"profile_picture\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":"error","message":"notNull Violation: Profile.profile_picture cannot be null"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":"error","message":"null value in column \"fullname\" of relation \"Profile\" violates not-null constraint"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'id')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'split')"}
+{"level":"error","message":"\"value\" must be of type object"}
+{"level":"error","message":"\"email\" is required"}
+{"level":"error","message":"object is not iterable (cannot read property Symbol(Symbol.iterator))"}
+{"level":"error","message":"object is not iterable (cannot read property Symbol(Symbol.iterator))"}
+{"level":"error","message":"object is not iterable (cannot read property Symbol(Symbol.iterator))"}
+{"level":"error","message":"object is not iterable (cannot read property Symbol(Symbol.iterator))"}
+{"level":"error","message":"object is not iterable (cannot read property Symbol(Symbol.iterator))"}
+{"level":"error","message":"object is not iterable (cannot read property Symbol(Symbol.iterator))"}
+{"level":"error","message":"object is not iterable (cannot read property Symbol(Symbol.iterator))"}
+{"level":"error","message":"column \"attribute\" does not exist"}
+{"level":"error","message":"column \"attribute\" does not exist"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'dataValues')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'dataValues')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'dataValues')"}
+{"level":"error","message":"\"role\" must be one of [Admin, Seller, User]"}
+{"level":"error","message":"\"userId\" is required"}
+{"level":"error","message":"WHERE parameter \"token\" has invalid \"undefined\" value"}
+{"level":"error","message":"WHERE parameter \"token\" has invalid \"undefined\" value"}
