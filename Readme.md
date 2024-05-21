@@ -60,9 +60,7 @@ This project is a full-fledged e-commerce platform built with Node.js, Express.j
    npm install
    ```
 
-   ```
-
-4. Start the development server:
+3. Start the development server:
    ```bash
    npm start
    ```
