@@ -1,18 +1,24 @@
 import { respond } from "../../utils/response.js";
-import { sendResetPasswordEmail, sendVerifcationEmail } from "../../services/email/nodemailer.js";
 import {
-  generateAccessToken, generateVerificationToken,
-  generateRefreshToken, generateResetPasswordToken
+  sendResetPasswordEmail,
+  sendVerifcationEmail,
+} from "../../services/email/nodemailer.js";
+import {
+  generateAccessToken,
+  generateVerificationToken,
+  generateRefreshToken,
+  generateResetPasswordToken,
 } from "../../utils/generateToken.js";
 import repository from "./repository.js";
 import {
-  forgotPasswordSchema, loginSchema,
-  resetPasswordSchema, signUpSchema, tokenSchema,
+  forgotPasswordSchema,
+  getTokenSchema,
+  loginSchema,
+  resetPasswordSchema,
+  signUpSchema,
 } from "./schema.js";
 import bcrypt from "bcrypt";
 import { getCookie, setCookie } from "../../helpers/cookie.js";
-
-
 
 /**
  * Signs up a new user.
@@ -27,14 +33,17 @@ export async function signup(req, res, next) {
     const validatedData = await signUpSchema.validateAsync(req.body);
     const newUser = await repository.create(validatedData);
     const verificationToken = generateVerificationToken(newUser.id);
-    sendVerifcationEmail(req, newUser.email, verificationToken.token)
+    sendVerifcationEmail(req, newUser.email, verificationToken.token);
     await repository.createToken(verificationToken);
-    respond(res, 201, "Account created successfully. Please check your email to verify your account.");
+    respond(
+      res,
+      201,
+      "Account created successfully. Please check your email to verify your account."
+    );
   } catch (err) {
     next(err);
   }
 }
-
 
 /**
  * Verifies a user's account using a verification token.
@@ -46,17 +55,16 @@ export async function signup(req, res, next) {
  */
 export async function verifyAccount(req, res, next) {
   try {
-    const params = await tokenSchema.validateAsync(req.query);
-    const token= await repository.findToken(params.token);
-    if (!tokenRecord) respond(res, 404, "Token does not exist");
+    const params = await getTokenSchema.validateAsync(req.query);
+    const token = await repository.findToken(params.token);
+    if (!token) return respond(res, 404, "Token does not exist");
     await repository.markAccountAsVerified(token.userId);
     await repository.deleteToken(token.token);
-    respond(res, 200, "Account verified");
+    return respond(res, 200, "Account verified");
   } catch (err) {
     next(err);
   }
 }
-
 
 /**
  * Logs in a user using email and password.
@@ -82,7 +90,6 @@ export async function login(req, res, next) {
   }
 }
 
-
 /**
  * Handles Google login flow.
  * @param {import('express').Request} req - The Express request object.
@@ -93,13 +100,13 @@ export async function login(req, res, next) {
  */
 export async function google(req, res, next) {
   try {
-    const refreshToken = generateRefreshToken(req.user.userId)
-    const access_token = req.user.access_token
-    await repository.createToken(refreshToken)
-    setCookie(res, refreshToken.token)
+    const refreshToken = generateRefreshToken(req.user.userId);
+    const access_token = req.user.access_token;
+    await repository.createToken(refreshToken);
+    setCookie(res, refreshToken.token);
     return respond(res, 200, "Login successfull", { access_token });
   } catch (err) {
-    next(err)
+    next(err);
   }
 }
 
@@ -138,15 +145,14 @@ export async function forgotPassword(req, res, next) {
     const validatedData = await forgotPasswordSchema.validateAsync(req.body);
     const user = await repository.findUserByEmail(validatedData.email);
     if (!user) return respond(res, 404, "Account does not exist");
-    const resetPasswordToken = generateResetPasswordToken(user.id)
-    await repository.createToken(resetPasswordToken)
-    sendResetPasswordEmail(req, user.email, resetPasswordToken.token)
-    return respond(res, 200, "Reset password link sent to your email")
+    const resetPasswordToken = generateResetPasswordToken(user.id);
+    await repository.createToken(resetPasswordToken);
+    sendResetPasswordEmail(req, user.email, resetPasswordToken.token);
+    return respond(res, 200, "Reset password link sent to your email");
   } catch (err) {
     next(err);
   }
 }
-
 
 /**
  * Verifies a password reset token.
@@ -158,16 +164,15 @@ export async function forgotPassword(req, res, next) {
  */
 export async function verifyPasswordResetToken(req, res, next) {
   try {
-    const params = await tokenSchema.validateAsync(req.query)
-    const existingToken = await repository.findToken(params.token)
+    const params = await getTokenSchema.validateAsync(req.query);
+    const existingToken = await repository.findToken(params.token);
     if (!existingToken) return respond(res, 404, "Token does not exist");
-    await repository.deleteToken(existingToken.token)
-    return respond(res, 200, "Token is valid")
+    await repository.deleteToken(existingToken.token);
+    return respond(res, 200, "Token is valid");
   } catch (err) {
     next(err);
   }
 }
-
 
 /**
  * Resets a user's password using the reset token.
@@ -179,16 +184,15 @@ export async function verifyPasswordResetToken(req, res, next) {
  */
 export async function resetPassword(req, res, next) {
   try {
-    const validatedData = await resetPasswordSchema.validateAsync(req.body)
-    const user = await repository.findUserByEmail(validatedData.email)
-    if (!user) return respond(res, 401, "Email does not exist")
-    await repository.updatePassword(validatedData)
-    return respond(res, 200, "Password reset successfull")
+    const validatedData = await resetPasswordSchema.validateAsync(req.body);
+    const user = await repository.findUserByEmail(validatedData.email);
+    if (!user) return respond(res, 401, "Email does not exist");
+    await repository.updatePassword(validatedData);
+    return respond(res, 200, "Password reset successfull");
   } catch (err) {
     next(err);
   }
 }
-
 
 /**
  * Logs out a user by deleting their access token and blacklisting their refresh token.
@@ -200,11 +204,11 @@ export async function resetPassword(req, res, next) {
  */
 export async function logout(req, res, next) {
   try {
-    const refreshToken = getCookie(req)
-    const accessToken = req.accessToken
-    await repository.createBlackList(accessToken)
-    await repository.deleteToken(refreshToken)
-    return respond(res, 200, "Logout succesfull")
+    const refreshToken = getCookie(req);
+    const accessToken = req.accessToken;
+    await repository.createBlackList(accessToken);
+    await repository.deleteToken(refreshToken);
+    return respond(res, 200, "Logout succesfull");
   } catch (err) {
     next(err);
   }

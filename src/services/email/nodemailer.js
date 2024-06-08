@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 import EventEmitter from "node:events";
 import { logger } from "../../utils/logger.js";
 import config from "../../utils/config.js";
-export const emailEvent = new EventEmitter();
+const emailEvent = new EventEmitter();
 
 /**
  * Creates a nodemailer transport instance for sending emails using Gmail.

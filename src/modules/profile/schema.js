@@ -5,7 +5,7 @@ export const updateProfileSchema = Joi.object({
     dateOfBirth: Joi.date().optional(),
 })
 
-export const userSchema = Joi.object({
+export const getUserSchema = Joi.object({
     userId: Joi.string().uuid().required()
 })
 

@@ -29,7 +29,7 @@ auth.post('/verify-password-reset-token', verifyPasswordResetToken)
 
 auth.patch('/reset-password', resetPassword)
 
-auth.post('/logout',validateJwt, checkBlacklistedToken, logout)
+auth.post('/logout', validateJwt, checkBlacklistedToken, logout)
 
 
 

@@ -2,8 +2,6 @@ import { sequelize } from "../../utils/database.js";
 import { logger } from "../../utils/logger.js";
 import { User } from "../auth/model.js";
 
-
-
 /**
  * Retrieves a user by their unique identifier.
  *
@@ -11,14 +9,12 @@ import { User } from "../auth/model.js";
  * @returns {Promise<User|null>} - The user with the specified ID, or null if not found.
  */
 async function findById(userId) {
-    try {
-        return await User.findByPk(userId)
-    } catch (err) {
-        logger.error(err.message)
-    }
+  try {
+    return await User.findByPk(userId);
+  } catch (err) {
+    logger.error(err.stack);
+  }
 }
-
-
 
 /**
  * Fetches all users with pagination.
@@ -28,20 +24,32 @@ async function findById(userId) {
  * @returns {Promise<{ data: User[], count: number }>} - An object containing the fetched users and the total count of users.
  */
 async function fetchAllUser(page, limit) {
-    try {
-        return {
-            data: await User.findAll({
-                offset: (page - 1) * limit, limit: limit, attributes: [
-                    "id", "email", "role", "account_status", "verified", "createdAt", "updatedAt"
-                ]
-            }),
-            count: await User.count()
-        }
-    } catch (err) {
-        logger.error(err.message)
-    }
+  try {
+    return {
+      data: await User.findAll({
+        offset: (page - 1) * limit,
+        limit: limit,
+        attributes: [
+          "id",
+          "email",
+          "role",
+          "account_status",
+          "verified",
+          "createdAt",
+          "updatedAt",
+        ],
+      }),
+      pagination: {
+        page,
+        limit,
+        total_pages: Math.ceil((await User.count()) / limit),
+        total_items: await User.count(),
+      },
+    };
+  } catch (err) {
+    logger.error(err.stack);
+  }
 }
-
 
 /**
  * Updates a user's email, password, and role in the database.
@@ -54,21 +62,24 @@ async function fetchAllUser(page, limit) {
  * @returns {Promise<object[]>} - An array of sanitized user records, with the password field removed.
  */
 async function update(userId, data) {
-    try {
-        const [updatedRows, updateRecords] = await User.update({
-            email: data.email || sequelize.literal("email"),
-            password: data.password || sequelize.literal("password"),
-            role: data.role || sequelize.literal("role")
-        }, { where: { id: userId }, returning: true })
+  try {
+    const [updatedRows, updateRecords] = await User.update(
+      {
+        email: data.email || sequelize.literal("email"),
+        password: data.password || sequelize.literal("password"),
+        role: data.role || sequelize.literal("role"),
+      },
+      { where: { id: userId }, returning: true }
+    );
 
-        const sanitizedRecords = updateRecords.map(record => {
-            const { password, ...sanitizedRecords } = record.get({ plain: true })
-            return sanitizedRecords
-        })
-        return sanitizedRecords
-    } catch (err) {
-        logger.error(err.message)
-    }
+    const sanitizedRecords = updateRecords.map((record) => {
+      const { password, ...sanitizedRecords } = record.get({ plain: true });
+      return sanitizedRecords;
+    });
+    return sanitizedRecords;
+  } catch (err) {
+    logger.error(err.stack);
+  }
 }
 
 /**
@@ -78,18 +89,18 @@ async function update(userId, data) {
  * @returns {Promise<number>} - The number of rows affected by the delete operation.
  */
 async function deleteById(userId) {
-    try {
-        return await User.destroy({ where: { id: userId }, force: true })
-    } catch (err) {
-        logger.error(err.message)
-    }
+  try {
+    return await User.destroy({ where: { id: userId }, force: true });
+  } catch (err) {
+    logger.error(err.stack);
+  }
 }
 /**
  * Provides a set of repository functions for managing users in the admin module.
  */
 export const repository = {
-    update,
-    fetchAllUser,
-    findById,
-    deleteById
-}
+  update,
+  fetchAllUser,
+  findById,
+  deleteById,
+};
