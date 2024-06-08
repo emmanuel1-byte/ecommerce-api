@@ -63,5 +63,5 @@ function setCache(req, res) {
  */
 function getCache(req, res, cacheData) {
     logger.info('Cache hit for ' + req.originalUrl)
-    return respond(res, 200, "User's retrieved", JSON.parse(cacheData))
+    return respond(res, 200, "Profile retrieved successfully", JSON.parse(cacheData))
 }

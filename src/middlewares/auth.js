@@ -13,7 +13,7 @@ import config from "../utils/config.js";
  * @param {Function} next - The next middleware function in the chain.
  */
 export function validateJwt(req, res, next) {
-  const accessToken = req.headers.authorization.split(" ")[1];
+  const accessToken = req.headers.authorization?.split(" ")[1];
   if (!accessToken) return respond(res, 400, "Access token required!");
   jwt.verify(accessToken, config.JWT_SECRET, (err, payload) => {
     if (err) {

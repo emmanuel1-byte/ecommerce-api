@@ -2,12 +2,11 @@ import { respond } from "../../utils/response.js";
 import { repository } from "./repository.js";
 import authRespository from "../auth/repository.js";
 import {
-    createUserSchema, paginationSchema,
-    updateUserSchema, userSchema
+  createUserSchema,
+  getUserSchema,
+  paginationSchema,
+  updateUserSchema,
 } from "./schema.js";
-
-
-
 
 /**
  * Creates a new user.
@@ -18,15 +17,14 @@ import {
  * @throws {Error} - Any error that occurs during user creation.
  */
 export async function createUser(req, res, next) {
-    try {
-        const validatedData = await createUserSchema.validateAsync(req.body)
-        await authRespository.create(validatedData)
-        return respond(res, 201, "User created succesfully")
-    } catch (err) {
-        next(err)
-    }
+  try {
+    const validatedData = await createUserSchema.validateAsync(req.body);
+    await authRespository.create(validatedData);
+    return respond(res, 201, "User created succesfully");
+  } catch (err) {
+    next(err);
+  }
 }
-
 
 /**
  * Retrieves a paginated list of users.
@@ -37,23 +35,15 @@ export async function createUser(req, res, next) {
  * @throws {Error} - Any error that occurs during user retrieval.
  */
 export async function getPaginatedListOfUsers(req, res, next) {
-    try {
-        const params = await paginationSchema.validateAsync(req.query)
-        const { page, limit } = params
-        const user = await repository.fetchAllUser(page, limit);
-        return respond(res, 200, "User's retrieved", {
-            user: user.data,
-            pagination: {
-                page, limit,
-                total_pages: Math.ceil(user.count / limit),
-                total_items: user.count
-            }
-        })
-    } catch (err) {
-        next(err)
-    }
+  try {
+    const params = await paginationSchema.validateAsync(req.query);
+    const { page, limit } = params;
+    const { user, pagination } = await repository.fetchAllUser(page, limit);
+    return respond(res, 200, "User's retrieved", { user, pagination });
+  } catch (err) {
+    next(err);
+  }
 }
-
 
 /**
  * Updates a user.
@@ -64,19 +54,17 @@ export async function getPaginatedListOfUsers(req, res, next) {
  * @throws {Error} - Any error that occurs during user update.
  */
 export async function updateUser(req, res, next) {
-    try {
-        const params = await userSchema.validateAsync(req.params)
-        const existingUser = await repository.findById(params.userId)
-        if (!existingUser) return respond(res, 404, "User not found")
-        const validatedData = await updateUserSchema.validateAsync(req.body)
-        const user = await repository.update(existingUser.id, validatedData)
-        return respond(res, 201, "User updated succesfully", { user })
-    } catch (err) {
-        next(err)
-    }
+  try {
+    const params = await getUserSchema.validateAsync(req.params);
+    const existingUser = await repository.findById(params.userId);
+    if (!existingUser) return respond(res, 404, "User not found");
+    const validatedData = await updateUserSchema.validateAsync(req.body);
+    const user = await repository.update(existingUser.id, validatedData);
+    return respond(res, 201, "User updated succesfully", { user });
+  } catch (err) {
+    next(err);
+  }
 }
-
-
 
 /**
  * Deletes a user by their ID.
@@ -89,12 +77,12 @@ export async function updateUser(req, res, next) {
  * @returns {Promise<void>} - A promise that resolves when the user has been deleted.
  */
 export async function deleteUser(req, res, next) {
-    try {
-        const params = await userSchema.validateAsync(req.params)
-        const user = repository.deleteById(params.userId)
-        if (!user) return respond(res, 404, "User not found")
-        return respond(res, 200, "User deleted succesfully")
-    } catch (err) {
-        next(err)
-    }
+  try {
+    const params = await getUserSchema.validateAsync(req.params);
+    const user = repository.deleteById(params.userId);
+    if (!user) return respond(res, 404, "User not found");
+    return respond(res, 200, "User deleted succesfully");
+  } catch (err) {
+    next(err);
+  }
 }

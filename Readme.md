@@ -10,7 +10,7 @@ This project is a full-fledged e-commerce platform built with Node.js, Express.j
 - User registration and login
 - Password reset functionality
 - User profile management
-- Role-based access control (user, admin)
+- Role-based access control (user, vendor, admin)
 
 ### Product Management
 - Add, update, delete products

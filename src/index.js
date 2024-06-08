@@ -9,6 +9,8 @@ import { respond } from "./utils/response.js";
 import { globalErrorHandler, routeNotFound } from "./middlewares/error.js";
 import admin from "./modules/admin/route.js";
 import profile from "./modules/profile/route.js";
+import product from "./modules/product/route.js";
+import category from "./modules/category/route.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -32,6 +34,8 @@ app.get('/', (req, res)=>{
 app.use("/v1/auth", auth);
 app.use("/v1/admin/users", admin)
 app.use('/v1/profile', profile)
+app.use('/v1/category', category)
+app.use('/v1/products', product)
 
 app.use(routeNotFound);
 app.use(globalErrorHandler)

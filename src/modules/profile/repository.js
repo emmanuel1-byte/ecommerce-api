@@ -27,7 +27,7 @@ async function updateProfile(userId, profilePicture, data) {
         await client.del(['/v1/profile/private', `/v1/profile/public/${userId}`])
         return updatedRecords
     } catch (err) {
-        logger.error(err.message)
+        logger.error(err.stack);
     }
 }
 
@@ -44,7 +44,7 @@ async function findProfile(userId) {
             include: { model: User, attributes: ['email'] }
         })
     } catch (err) {
-        logger.error(err.message)
+        logger.error(err.stack);
     }
 }
 
@@ -59,7 +59,7 @@ async function fetchPrivateProfile(userId) {
     try {
         return await Profile.findOne({ where: { userId: userId }, attributes: ["fullname", "profile_picture", "date_of_birth"], include: { model: User, attributes: ['email'] } })
     } catch (err) {
-        logger.error(err.message)
+        logger.error(err.stack);
     }
 }
 
@@ -74,7 +74,7 @@ async function fetchPublicProfile(userId) {
     try {
         return await Profile.findOne({ where: { userId: userId }, attributes: ["fullname", "profile_picture"], include: { model: User, attributes: ['email'] } })
     } catch (err) {
-        logger.error(err.message)
+        logger.error(err.stack);
     }
 }
 
@@ -89,7 +89,7 @@ async function deleteAccount(userId) {
     try {
         return await Profile.destroy({ where: { userId: userId }, force: true })
     } catch (err) {
-        logger.error(err.message)
+        logger.error(err.stack);
     }
 }
 

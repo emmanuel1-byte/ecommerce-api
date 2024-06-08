@@ -34,7 +34,7 @@ async function create(data) {
     })
 
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
 
@@ -48,7 +48,7 @@ async function findUserByEmail(email) {
   try {
     return await User.findOne({ where: { email: email } });
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
 
@@ -56,10 +56,9 @@ async function findUserById(userId) {
   try {
     return await User.findByPk(userId)
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
-
 
 
 /**
@@ -76,7 +75,7 @@ async function updatePassword(data) {
     user.password = data.password
     return await user.save()
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
 /**
@@ -99,7 +98,7 @@ async function createToken(data) {
       expiresIn: data.expiresIn,
     });
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
 
@@ -113,7 +112,7 @@ async function findToken(token) {
   try {
     return await Token.findOne({ where: { token: token } });
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
 
@@ -127,7 +126,7 @@ async function markAccountAsVerified(userId) {
   try {
     return await User.update({ verified: true }, { where: { id: userId } });
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
 
@@ -141,7 +140,7 @@ async function deleteToken(token) {
   try {
     return await Token.destroy({ where: { token: token }, force: true });
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
 
@@ -155,7 +154,7 @@ async function createBlackList(token) {
   try {
     return await BlackList.create({ token: token })
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
 
@@ -163,7 +162,7 @@ async function findBlackListedToken(token) {
   try {
     return await BlackList.findOne({ where: { token: token } })
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
 

@@ -15,7 +15,7 @@ import { respond } from "../utils/response.js";
 export function globalErrorHandler(err, req, res, next) {
     logger.error(err.message);
     if (err instanceof Joi.ValidationError) {
-        return respond(res, 400, err.message);
+        return respond(res, 400, err.stack);
     }
     return respond(res, 500, "Internal Server Error");
 }
