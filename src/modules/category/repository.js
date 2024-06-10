@@ -36,13 +36,14 @@ async function fetchAllCategory() {
   }
 }
 
+
 /**
  * Fetches a category by its ID, including the associated products.
  *
  * @param {number} categoryId - The ID of the category to fetch.
  * @returns {Promise<Category>} - The category with the specified ID, including its associated products.
  */
-async function findCategoryById(categoryId) {
+async function fetchCategoryById(categoryId) {
   try {
     return await Category.findByPk(categoryId, {
       include: {
@@ -103,7 +104,7 @@ async function deleteCategory(categoryId) {
 const repository = {
   create,
   fetchAllCategory,
-  findCategoryById,
+  fetchCategoryById,
   updateCategory,
   deleteCategory,
 };

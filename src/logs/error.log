@@ -333,3 +333,16 @@
 {"level":"error","message":"Invalid status code: 20"}
 {"level":"error","message":"\"description\" is required"}
 {"level":"error","message":"Invalid status code: 20"}
+{"level":"error","message":"randomUUID is not defined"}
+{"level":"error","message":"notNull Violation: ProductRating.product_id cannot be null"}
+{"level":"error","message":"notNull Violation: Rating.user_id cannot be null"}
+{"level":"error","message":"column \"rating_id\" of relation \"ProductRatings\" does not exist"}
+{"level":"error","message":"null value in column \"rating_id\" of relation \"ProductRating\" violates not-null constraint"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'rating')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'rating')"}
+{"level":"error","message":"Error: WHERE parameter \"id\" has invalid \"undefined\" value\n    at PostgresQueryGenerator.whereItemQuery (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-generator.js:1743:13)\n    at /home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-generator.js:1734:25\n    at Array.forEach (<anonymous>)\n    at PostgresQueryGenerator.whereItemsQuery (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-generator.js:1732:35)\n    at PostgresQueryGenerator.whereQuery (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-generator.js:1714:24)\n    at PostgresQueryGenerator.updateQuery (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-generator.js:371:116)\n    at PostgresQueryInterface.bulkUpdate (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-interface.js:361:37)\n    at Rating.update (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/model.js:2010:54)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Object.update (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/rating/repository.js:31:54)"}
+{"level":"error","message":"\"rateId\" is required"}
+{"level":"error","message":"\"rateId\" is required"}
+{"level":"error","message":"\"rateId\" is required"}
+{"level":"error","message":"\"rateId\" is required"}
+{"level":"error","message":"\"rateId\" is required"}

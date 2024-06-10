@@ -2,6 +2,7 @@ import { Op } from "sequelize";
 import { logger } from "../../utils/logger.js";
 import { Product, ProductCategory } from "./model.js";
 import { sequelize } from "../../utils/database.js";
+import { Rating } from "../rating/model.js";
 
 /**
  * Creates a new product with the provided data and associates it with the specified vendor and category.
@@ -51,7 +52,7 @@ async function create(data, userId, thumbnail, productImages) {
  * @param {Object[]} productImages - The updated product images.
  * @returns {Promise<Product[]>} The affected products.
  */
-async function update(data, userId, thumbnail, productImages) {
+async function update(data, productId, thumbnail, productImages) {
   try {
     const [numberOfAffectedRoles, affectedRoles] = await Product.update(
       {
@@ -65,7 +66,7 @@ async function update(data, userId, thumbnail, productImages) {
           productImages?.map((file) => file?.url) ||
           sequelize.literal("product_images"),
       },
-      { where: { vendor_id: userId }, returning: true }
+      { where: { id: productId }, returning: true }
     );
     return affectedRoles;
   } catch (err) {
@@ -81,7 +82,9 @@ async function update(data, userId, thumbnail, productImages) {
  */
 async function fetchProductById(productId) {
   try {
-    return await Product.findByPk(productId);
+    return await Product.findByPk(productId, {
+      include: { model: Rating, through: { attributes: [] } },
+    });
   } catch (err) {
     logger.error(err.stack);
   }
@@ -132,8 +135,6 @@ async function fetchProductByKeyword(keyword) {
     logger.error(err.stack);
   }
 }
-
-
 
 /**
  * Deletes a product by its ID.

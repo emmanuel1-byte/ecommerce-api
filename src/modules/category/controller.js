@@ -56,7 +56,7 @@ export async function getAllCategory(req, res, next) {
 export async function getCategory(req, res, next) {
   try {
     const params = await getCategorySchema.validateAsync(req.params);
-    const category = await repository.findCategoryById(params.categoryId);
+    const category = await repository.fetchCategoryById(params.categoryId);
     if (!category) return respond(res, 404, "category not found");
     return respond(res, 200, "Category found", { category });
   } catch (err) {

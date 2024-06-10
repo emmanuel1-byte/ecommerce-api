@@ -56,11 +56,11 @@ export async function getPaginatedListOfUsers(req, res, next) {
 export async function updateUser(req, res, next) {
   try {
     const params = await getUserSchema.validateAsync(req.params);
-    const existingUser = await repository.findById(params.userId);
+    const existingUser = await repository.fetchUserById(params.userId);
     if (!existingUser) return respond(res, 404, "User not found");
     const validatedData = await updateUserSchema.validateAsync(req.body);
-    const user = await repository.update(existingUser.id, validatedData);
-    return respond(res, 201, "User updated succesfully", { user });
+    const updatedUser = await repository.update(existingUser.id, validatedData);
+    return respond(res, 201, "User updated succesfully", { user: updatedUser });
   } catch (err) {
     next(err);
   }
@@ -79,8 +79,9 @@ export async function updateUser(req, res, next) {
 export async function deleteUser(req, res, next) {
   try {
     const params = await getUserSchema.validateAsync(req.params);
-    const user = repository.deleteById(params.userId);
-    if (!user) return respond(res, 404, "User not found");
+    const existingUser = repository.fetchUserById(params.userId);
+    if (!existingUser) return respond(res, 404, "User not found");
+    await repository.deleteById(existingUser.id);
     return respond(res, 200, "User deleted succesfully");
   } catch (err) {
     next(err);

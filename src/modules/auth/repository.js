@@ -44,7 +44,7 @@ async function create(data) {
  * @param {string} email - The email address to search for.
  * @returns {Promise<User|null>} - The user object if found, otherwise null.
  */
-async function findUserByEmail(email) {
+async function fetchUserByEmail(email) {
   try {
     return await User.findOne({ where: { email: email } });
   } catch (err) {
@@ -52,7 +52,7 @@ async function findUserByEmail(email) {
   }
 }
 
-async function findUserById(userId) {
+async function fetchUserById(userId) {
   try {
     return await User.findByPk(userId)
   } catch (err) {
@@ -103,12 +103,14 @@ async function createToken(data) {
 }
 
 
+
 /**
- * Finds a token in the database.
- * @param {string} token - The token to search for.
- * @returns {Promise<Token|null>} The found token, or null if not found.
+ * Fetches a token from the database.
+ *
+ * @param {string} token - The token to fetch.
+ * @returns {Promise<Token>} - A Promise that resolves to the Token instance, or null if not found.
  */
-async function findToken(token) {
+async function fetchToken(token) {
   try {
     return await Token.findOne({ where: { token: token } });
   } catch (err) {
@@ -158,7 +160,7 @@ async function createBlackList(token) {
   }
 }
 
-async function findBlackListedToken(token) {
+async function fetchBlackListedToken(token) {
   try {
     return await BlackList.findOne({ where: { token: token } })
   } catch (err) {
@@ -171,15 +173,15 @@ async function findBlackListedToken(token) {
  */
 const repository = {
   create,
-  findUserByEmail,
-  findUserById,
+  fetchUserByEmail,
+  fetchUserById,
   updatePassword,
-  findToken,
+  fetchToken,
   markAccountAsVerified,
   deleteToken,
   createToken,
   createBlackList,
-  findBlackListedToken
+  fetchBlackListedToken
 };
 
 export default repository

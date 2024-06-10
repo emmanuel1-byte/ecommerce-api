@@ -10,7 +10,7 @@ import { respond } from "../utils/response.js";
 export function authorizeRole(role) {
   return async function (req, res, next) {
     try {
-      const user = await authRepository.findUserById(req.userId);
+      const user = await authRepository.fetchUserById(req.userId);
       if (user && user.role === role) {
         return next();
       }
