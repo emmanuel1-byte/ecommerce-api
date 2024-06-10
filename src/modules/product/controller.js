@@ -1,5 +1,6 @@
-import { cloudinaryUpload } from "../../services/upload/cloudinary.js";
+import { ProcessFiles } from "../../services/upload/processFiles.js";
 import { respond } from "../../utils/response.js";
+import { findProductSchema } from "../rating/schema.js";
 import repository from "./repository.js";
 import {
   createProductSchema,
@@ -23,21 +24,16 @@ import {
 export async function createProduct(req, res, next) {
   try {
     const validatedData = await createProductSchema.validateAsync(req.body);
-    const thumbnailBuffer = req.files["thumbnail"][0].buffer;
-    const productImagesBuffer = req.files["product_images"].map(
-      (file) => file.buffer
-    );
-    const [thumbnail, ...producImages] = await cloudinaryUpload([
-      thumbnailBuffer,
-      ...productImagesBuffer,
-    ]);
-    const product = await repository.create(
+    const { thumbnail, producImages } = await ProcessFiles.product(req.files);
+    const newProduct = await repository.create(
       validatedData,
       req.userId,
       thumbnail,
       producImages
     );
-    return respond(res, 201, "Product created succesfully", { product });
+    return respond(res, 201, "Product created succesfully", {
+      product: newProduct,
+    });
   } catch (err) {
     next(err);
   }
@@ -124,27 +120,20 @@ export async function searchProduct(req, res, next) {
  */
 export async function updateProduct(req, res, next) {
   try {
+    const params = await findProductSchema.validateAsync(req.params);
     const validatedData = await updateProductSchema.validateAsync(req.body);
-    let thumbnailBuffer, productImagesBuffer;
-    if (req.files && req.files.thumbnail && req.files.product_images) {
-      thumbnailBuffer = req.files["thumbnail"][0].buffer;
-      productImagesBuffer = req.files["product_images"].map(
-        (file) => file.buffer
-      );
-      const [thumbnail, ...producImages] = await cloudinaryUpload([
-        thumbnailBuffer,
-        ...productImagesBuffer,
-      ]);
-      const product = await repository.update(
-        validatedData,
-        req.userId,
-        thumbnail,
-        producImages
-      );
-      return respond(res, 200, "Product successfully updated", { product });
-    }
-    const product = await repository.update(validatedData, req.userId);
-    return respond(res, 200, "Product successfully updated", { product });
+    const existingProduct = await repository.fetchProductById(params.productId);
+    if (!existingProduct) return respond(res, 404, "Product not found");
+    const { thumbnail, producImages } = await ProcessFiles.product(req.files);
+    const updatedProduct = await repository.update(
+      validatedData,
+      req.userId,
+      thumbnail,
+      producImages
+    );
+    return respond(res, 200, "Product successfully updated", {
+      product: updatedProduct,
+    });
   } catch (err) {
     next(err);
   }

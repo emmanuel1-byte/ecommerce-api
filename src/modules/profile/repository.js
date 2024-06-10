@@ -16,7 +16,7 @@ import { Profile } from "./model.js";
  * @param {string} data.dateOfBirth - The new date of birth for the user.
  * @returns {Promise<object>} - The updated profile record.
  */
-async function updateProfile(userId, profilePicture, data) {
+async function update(userId, profilePicture, data) {
     try {
         const [updatedRows, updatedRecords] = await Profile.update({
             fullname: data.fullname || sequelize.literal('fullname'),
@@ -31,21 +31,22 @@ async function updateProfile(userId, profilePicture, data) {
     }
 }
 
+
 /**
- * Finds a user's profile in the database.
+ * Fetches the profile information for the specified user.
  *
- * @param {number} userId - The ID of the user whose profile to find.
- * @returns {Promise<Profile|null>} - The user's profile, or null if not found.
+ * @param {number} userId - The ID of the user whose profile information should be fetched.
+ * @returns {Promise<Object>} - The profile information for the specified user, including their email address.
  */
-async function findProfile(userId) {
-    try {
-        return await Profile.findOne({
-            where: { userId: userId },
-            include: { model: User, attributes: ['email'] }
-        })
-    } catch (err) {
-        logger.error(err.stack);
-    }
+async function fetchProfile(userId) {
+  try {
+    return await Profile.findOne({
+      where: { userId: userId },
+      include: { model: User, attributes: ["email"] },
+    });
+  } catch (err) {
+    logger.error(err.stack);
+  }
 }
 
 
@@ -85,7 +86,7 @@ async function fetchPublicProfile(userId) {
  * @param {number} userId - The ID of the user whose account should be deleted.
  * @returns {Promise<number>} - The number of rows affected by the deletion operation.
  */
-async function deleteAccount(userId) {
+async function deleteUserById(userId) {
     try {
         return await Profile.destroy({ where: { userId: userId }, force: true })
     } catch (err) {
@@ -100,11 +101,11 @@ async function deleteAccount(userId) {
  */
 
 const repository = {
-    updateProfile,
-    findProfile,
+    update,
+    fetchProfile,
     fetchPrivateProfile,
     fetchPublicProfile,
-    deleteAccount
+    deleteUserById
 }
 
 export default repository;

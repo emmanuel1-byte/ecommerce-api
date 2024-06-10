@@ -8,7 +8,7 @@ import { User } from "../auth/model.js";
  * @param {number} userId - The unique identifier of the user to retrieve.
  * @returns {Promise<User|null>} - The user with the specified ID, or null if not found.
  */
-async function findById(userId) {
+async function fetchUserById(userId) {
   try {
     return await User.findByPk(userId);
   } catch (err) {
@@ -101,6 +101,6 @@ async function deleteById(userId) {
 export const repository = {
   update,
   fetchAllUser,
-  findById,
+  fetchUserById,
   deleteById,
 };

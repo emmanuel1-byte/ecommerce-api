@@ -56,7 +56,7 @@ export async function signup(req, res, next) {
 export async function verifyAccount(req, res, next) {
   try {
     const params = await getTokenSchema.validateAsync(req.query);
-    const token = await repository.findToken(params.token);
+    const token = await repository.fetchToken(params.token);
     if (!token) return respond(res, 404, "Token does not exist");
     await repository.markAccountAsVerified(token.userId);
     await repository.deleteToken(token.token);
@@ -121,7 +121,7 @@ export async function google(req, res, next) {
 export async function refreshTokens(req, res, next) {
   try {
     const oldRefreshToken = getCookie(req);
-    const existingToken = await repository.findToken(oldRefreshToken);
+    const existingToken = await repository.fetchToken(oldRefreshToken);
     const newRefreshToken = generateRefreshToken(existingToken.userId);
     setCookie(res, newRefreshToken.token);
     await repository.createToken(newRefreshToken);
@@ -143,7 +143,7 @@ export async function refreshTokens(req, res, next) {
 export async function forgotPassword(req, res, next) {
   try {
     const validatedData = await forgotPasswordSchema.validateAsync(req.body);
-    const user = await repository.findUserByEmail(validatedData.email);
+    const user = await repository.fetchUserByEmail(validatedData.email);
     if (!user) return respond(res, 404, "Account does not exist");
     const resetPasswordToken = generateResetPasswordToken(user.id);
     await repository.createToken(resetPasswordToken);
@@ -165,7 +165,7 @@ export async function forgotPassword(req, res, next) {
 export async function verifyPasswordResetToken(req, res, next) {
   try {
     const params = await getTokenSchema.validateAsync(req.query);
-    const existingToken = await repository.findToken(params.token);
+    const existingToken = await repository.fetchToken(params.token);
     if (!existingToken) return respond(res, 404, "Token does not exist");
     await repository.deleteToken(existingToken.token);
     return respond(res, 200, "Token is valid");
@@ -185,7 +185,7 @@ export async function verifyPasswordResetToken(req, res, next) {
 export async function resetPassword(req, res, next) {
   try {
     const validatedData = await resetPasswordSchema.validateAsync(req.body);
-    const user = await repository.findUserByEmail(validatedData.email);
+    const user = await repository.fetchUserByEmail(validatedData.email);
     if (!user) return respond(res, 401, "Email does not exist");
     await repository.updatePassword(validatedData);
     return respond(res, 200, "Password reset successfull");
