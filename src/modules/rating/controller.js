@@ -67,6 +67,16 @@ export async function updateRating(req, res, next) {
   }
 }
 
+/**
+ * Deletes an existing rating for a product.
+ *
+ * @param {Object} req - The HTTP request object.
+ * @param {Object} req.params - The request parameters.
+ * @param {string} req.params.rateId - The ID of the rating to delete.
+ * @param {Object} res - The HTTP response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the rating is deleted.
+ */
 export async function deleteRating(req, res, next) {
   try {
     const parans = await findRateSchema.validateAsync(req.params);

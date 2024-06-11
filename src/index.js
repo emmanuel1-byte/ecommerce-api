@@ -12,6 +12,7 @@ import profile from "./modules/profile/route.js";
 import product from "./modules/product/route.js";
 import category from "./modules/category/route.js";
 import rating from "./modules/rating/route.js";
+import review from "./modules/review/route.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -38,6 +39,7 @@ app.use('/v1/profile', profile)
 app.use('/v1/category', category)
 app.use('/v1/products', product)
 app.use('/v1/rating', rating)
+app.use('/v1/review', review)
 
 app.use(routeNotFound);
 app.use(globalErrorHandler)

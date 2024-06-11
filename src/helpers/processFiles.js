@@ -1,4 +1,4 @@
-import { logger } from "../../utils/logger.js";
+import { logger } from "../utils/logger.js";
 
 /**
  * Provides methods for processing files, including uploading thumbnails and product images to Cloudinary.

@@ -1,4 +1,4 @@
-import { ProcessFiles } from "../../services/upload/processFiles.js";
+import { ProcessFiles } from "../../helpers/processFiles.js";
 import { respond } from "../../utils/response.js";
 import { findProductSchema } from "../rating/schema.js";
 import repository from "./repository.js";
