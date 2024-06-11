@@ -30,6 +30,6 @@ export async function databaseConnection() {
     await sequelize.sync();
     logger.info("Database connection established");
   } catch (err) {
-    logger.error("Database connection failed", err.stack);
+    logger.error(`Database connection failed: ${err.stack}`);
   }
 }

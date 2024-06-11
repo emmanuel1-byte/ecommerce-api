@@ -1,7 +1,7 @@
 import { respond } from "../../utils/response.js";
 import repository from "./repository.js";
 import { getUserSchema, updateProfileSchema } from "./schema.js";
-import { ProcessFiles } from "../../services/upload/processFiles.js";
+import { ProcessFiles } from "../../helpers/processFiles.js";
 
 export async function updateProfile(req, res, next) {
   try {

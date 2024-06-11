@@ -71,6 +71,12 @@ async function fetchRatingById(ratingId) {
   }
 }
 
+/**
+ * Deletes a rating by its ID.
+ *
+ * @param {number} ratingId - The ID of the rating to delete.
+ * @returns {Promise<number>} - The number of affected rows.
+ */
 async function deleteById(ratingId) {
   try {
     return await Rating.destroy({ where: { id: ratingId }, force: true });

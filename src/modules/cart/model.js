@@ -1,4 +1,6 @@
-
+import { DataTypes } from "sequelize"
+import { sequelize } from "../../utils/database.js"
+import { randomUUID } from "crypto"
 
 
 export const Cart = sequelize.define('Cart', {
@@ -12,6 +14,11 @@ export const Cart = sequelize.define('Cart', {
     user_id: {
         type: DataTypes.UUID,
         allowNull: false
+    },
+
+    quantity: {
+       type: DataTypes.INTEGER,
+       allowNull: false
     }
 }, { timestamps: true, freezeTableName: true })
 

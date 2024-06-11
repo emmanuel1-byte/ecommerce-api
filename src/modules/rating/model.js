@@ -48,11 +48,12 @@ export const ProductRating = sequelize.define("ProductRating", {
 User.hasMany(Rating, { foreignKey: "user_id", onDelete: "CASCADE" });
 Rating.belongsTo(User, { foreignKey: "user_id", onDelete: "CASCADE" });
 
+
 /**
  * Establishes a many-to-many relationship between the Product and Rating models.
  * - A Product can have many Ratings.
  * - A Rating can be associated with many Products.
- * - When a Rating is deleted, all associated ProductRating records will also be deleted.
+ * - When a Product or Rating is deleted, all associated ProductRating records will also be deleted.
  */
 Product.belongsToMany(Rating, {
   through: ProductRating,
@@ -60,12 +61,6 @@ Product.belongsToMany(Rating, {
   onDelete: "CASCADE",
 });
 
-/**
- * Establishes a many-to-many relationship between the Rating and Product models.
- * - A Rating can be associated with many Products.
- * - A Product can have many Ratings.
- * - When a Rating is deleted, all associated ProductRating records will also be deleted.
- */
 Rating.belongsToMany(Product, {
   through: ProductRating,
   foreignKey: "rate_id",

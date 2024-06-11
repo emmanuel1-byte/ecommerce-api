@@ -1,8 +1,16 @@
 import { sequelize } from "../../utils/database.js";
 import { logger } from "../../utils/logger.js";
 import { ProductRating } from "../rating/model.js";
-import { Review } from "./model.js";
+import { ProductReview, Review } from "./model.js";
 
+/**
+ * Creates a new product review and associates it with the given user and product.
+ *
+ * @param {number} userId - The ID of the user creating the review.
+ * @param {number} productId - The ID of the product being reviewed.
+ * @param {object} data - An object containing the review data, such as the comment.
+ * @returns {Promise<Review>} - The created review instance.
+ */
 async function create(userId, productId, data) {
   try {
     return await sequelize.transaction(async (t) => {
@@ -14,9 +22,9 @@ async function create(userId, productId, data) {
         { transaction: t }
       );
 
-      await ProductRating.create(
+      await ProductReview.create(
         {
-          review_id: review,
+          review_id: review.id,
           product_id: productId,
         },
         { transaction: t }
@@ -28,6 +36,12 @@ async function create(userId, productId, data) {
   }
 }
 
+/**
+ * Fetches a review by its ID.
+ *
+ * @param {number} reviewId - The ID of the review to fetch.
+ * @returns {Promise<Review>} - The review instance, or null if not found.
+ */
 export async function fetchReviewById(reviewId) {
   try {
     return await Review.findByPk(reviewId);
@@ -36,6 +50,14 @@ export async function fetchReviewById(reviewId) {
   }
 }
 
+
+/**
+ * Updates an existing review with the provided data.
+ *
+ * @param {number} reviewId - The ID of the review to update.
+ * @param {object} data - An object containing the updated review data, such as the comment.
+ * @returns {Promise<Review>} - The updated review instance.
+ */
 export async function update(reviewId, data) {
   try {
     const [numberOfAffectedRoles, affectedRoles] = await Review.update(
@@ -51,6 +73,12 @@ export async function update(reviewId, data) {
   }
 }
 
+/**
+ * Deletes a review by its ID.
+ *
+ * @param {number} reviewId - The ID of the review to delete.
+ * @returns {Promise<number>} - The number of affected rows.
+ */
 export async function deleteById(reviewId) {
   try {
     return await Review.destroy({ where: { id: reviewId }, force: true });
@@ -60,10 +88,10 @@ export async function deleteById(reviewId) {
 }
 
 const repository = {
-    create,
-    fetchReviewById,
-    update,
-    deleteById
-}
+  create,
+  fetchReviewById,
+  update,
+  deleteById,
+};
 
-export default repository
+export default repository;
