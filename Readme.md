@@ -38,7 +38,6 @@ This project is a full-fledged e-commerce platform built with Node.js, Express.j
 - Manage users and roles
 - Manage products and categories
 - View and manage orders
-- Generate sales reports
 
 ## Getting Started
 

@@ -472,3 +472,6 @@
 {"level":"error","message":"cart.reduce is not a function"}
 {"level":"error","message":"TypeError: cart.reduce is not a function\n    at Object.fetchCart (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/cart/repository.js:59:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async viewCart (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/cart/controller.js:26:26)"}
 {"level":"error","message":"TypeError: cart.reduce is not a function\n    at Object.fetchCart (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/cart/repository.js:59:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async viewCart (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/cart/controller.js:26:26)"}
+{"level":"error","message":"\"productId\" must be a valid GUID"}
+{"level":"error","message":"\"productId\" must be a valid GUID"}
+{"level":"error","message":"\"productId\" must be a valid GUID"}

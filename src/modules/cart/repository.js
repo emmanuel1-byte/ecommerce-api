@@ -7,14 +7,13 @@ import { Cart } from "./model.js";
  * Creates a new cart item for the specified user and product.
  *
  * @param {number} userId - The ID of the user to create the cart item for.
- * @param {Object} data - The data for the new cart item.
- * @param {number} data.productId - The ID of the product to add to the cart.
+ * @param {number} productId - The ID of the product to add to the cart.
  * @returns {Promise<Cart>} - A Promise that resolves to the newly created cart item.
  */
-async function create(userId, data) {
+async function create(userId, productId) {
   try {
     return await Cart.create({
-      product_id: data.productId,
+      product_id: productId,
       user_id: userId,
     });
   } catch (err) {
@@ -34,7 +33,7 @@ async function increaseQuantity(cartId) {
     cart.quantity++;
     await cart.save();
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
 
@@ -50,7 +49,7 @@ async function decreaseQuantity(cartId) {
     cart.quantity--;
     await cart.save();
   } catch (err) {
-    logger.error(err.message);
+    logger.error(err.stack);
   }
 }
 
@@ -102,16 +101,17 @@ async function fetchCartById(cartId) {
   }
 }
 
+
 /**
- * Deletes a cart item from the database.
+ * Deletes a product from the user's cart.
  *
- * @param {number} cartId - The ID of the cart item to delete.
- * @returns {Promise<number>} - The number of rows affected by the delete operation.
+ * @param {number} productId - The ID of the product to delete from the cart.
+ * @returns {Promise<number>} - The number of rows deleted.
  */
-async function deleteFromCart(cartId) {
+async function deleteFromCart(productId) {
   try {
     return await Cart.destroy({
-      where: { user_id: cartId },
+      where: { product_id: productId },
       force: true,
     });
   } catch (err) {

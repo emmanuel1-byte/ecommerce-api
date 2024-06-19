@@ -8,10 +8,10 @@ export const updateCartSchema = Joi.object({
     quantity: Joi.number().required()
 })
 
-export const findCartSchema = Joi.object({
+export const fetchCartSchema = Joi.object({
     cartId: Joi.string().uuid().required()
 })
 
-export const findProductSchema = Joi.object({
+export const fetchProductSchema = Joi.object({
     productId: Joi.string().uuid().required()
 })
