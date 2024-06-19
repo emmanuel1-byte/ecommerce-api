@@ -48,9 +48,6 @@ async function fetchCategoryById(categoryId) {
     return await Category.findByPk(categoryId, {
       include: {
         model: Product,
-        through: {
-          attributes: [],
-        },
       },
     });
   } catch (err) {

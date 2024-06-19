@@ -1,6 +1,5 @@
 import { ProcessFiles } from "../../helpers/processFiles.js";
 import { respond } from "../../utils/response.js";
-import { findProductSchema } from "../rating/schema.js";
 import repository from "./repository.js";
 import {
   createProductSchema,
@@ -24,12 +23,14 @@ import {
 export async function createProduct(req, res, next) {
   try {
     const validatedData = await createProductSchema.validateAsync(req.body);
-    const { thumbnail, producImages } = await ProcessFiles.product(req.files);
+    const { thumbnailUrl, producImagesUrl } = await ProcessFiles.product(
+      req.files
+    );
     const newProduct = await repository.create(
-      validatedData,
       req.userId,
-      thumbnail,
-      producImages
+      thumbnailUrl,
+      producImagesUrl,
+      validatedData
     );
     return respond(res, 201, "Product created succesfully", {
       product: newProduct,
@@ -102,7 +103,6 @@ export async function searchProduct(req, res, next) {
   try {
     const params = await productSearchSchema.validateAsync(req.query);
     const product = await repository.fetchProductByKeyword(params.query);
-    if (product.length === 0) return respond(res, 404, "Product not found");
     return respond(res, 200, "Product found", { product });
   } catch (err) {
     next(err);
@@ -120,16 +120,16 @@ export async function searchProduct(req, res, next) {
  */
 export async function updateProduct(req, res, next) {
   try {
-    const params = await findProductSchema.validateAsync(req.params);
+    const params = await getProductSchema.validateAsync(req.params);
     const validatedData = await updateProductSchema.validateAsync(req.body);
     const existingProduct = await repository.fetchProductById(params.productId);
     if (!existingProduct) return respond(res, 404, "Product not found");
     const { thumbnail, producImages } = await ProcessFiles.product(req.files);
     const updatedProduct = await repository.update(
-      validatedData,
-      req.userId,
+      existingProduct.id,
       thumbnail,
-      producImages
+      producImages,
+      validatedData
     );
     return respond(res, 200, "Product successfully updated", {
       product: updatedProduct,

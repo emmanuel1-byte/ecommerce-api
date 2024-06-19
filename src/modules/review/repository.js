@@ -1,41 +1,25 @@
-import { sequelize } from "../../utils/database.js";
 import { logger } from "../../utils/logger.js";
-import { ProductRating } from "../rating/model.js";
-import { ProductReview, Review } from "./model.js";
+import { Review } from "./model.js";
 
 /**
- * Creates a new product review and associates it with the given user and product.
+ * Creates a new review with the provided user ID, product ID, and review data.
  *
  * @param {number} userId - The ID of the user creating the review.
  * @param {number} productId - The ID of the product being reviewed.
  * @param {object} data - An object containing the review data, such as the comment.
- * @returns {Promise<Review>} - The created review instance.
+ * @returns {Promise<Review>} - The newly created review instance.
  */
 async function create(userId, productId, data) {
   try {
-    return await sequelize.transaction(async (t) => {
-      const review = await Review.create(
-        {
-          comment: data.comment,
-          user_id: userId,
-        },
-        { transaction: t }
-      );
-
-      await ProductReview.create(
-        {
-          review_id: review.id,
-          product_id: productId,
-        },
-        { transaction: t }
-      );
-      return review;
+    return await Review.create({
+      user_id: userId,
+      product_id: productId,
+      comment: data.comment,
     });
   } catch (err) {
     logger.error(err.stack);
   }
 }
-
 /**
  * Fetches a review by its ID.
  *
@@ -49,7 +33,6 @@ export async function fetchReviewById(reviewId) {
     logger.error(err.stack);
   }
 }
-
 
 /**
  * Updates an existing review with the provided data.

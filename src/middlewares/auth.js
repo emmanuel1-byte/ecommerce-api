@@ -40,8 +40,7 @@ export function validateJwt(req, res, next) {
  */
 export async function ensureUniqueUser(req, res, next) {
   try {
-    const validatedData = await signUpSchema.validateAsync(req.body);
-    const existingUser = await repository.fetchUserByEmail(validatedData.email);
+    const existingUser = await repository.fetchUserByEmail(req.body.email);
     if (existingUser) {
       return respond(res, 409, "Account already exist!");
     }
@@ -62,8 +61,7 @@ export async function ensureUniqueUser(req, res, next) {
  */
 export async function checkAccountVerificationStatus(req, res, next) {
   try {
-    const validatedData = await loginSchema.validateAsync(req.body);
-    const user = await repository.fetchUserByEmail(validatedData.email);
+    const user = await repository.fetchUserByEmail(req.body.email);
     if (user && !user.verified) {
       return respond(res, 403, "Account not verified. Please verify your account via email.");
     }

@@ -1,7 +1,7 @@
 import {
   createReviewSchema,
-  findProductSchema,
-  findReviewSchema,
+  fetchProductSchema,
+  fetchReviewSchema,
   updateReviewSchema,
 } from "./schema.js";
 import produtRepository from "../product/repository.js";
@@ -18,7 +18,7 @@ import repository from "./repository.js";
  */
 export async function createReview(req, res, next) {
   try {
-    const params = await findProductSchema.validateAsync(req.params);
+    const params = await fetchProductSchema.validateAsync(req.params);
     const validatedData = await createReviewSchema.validateAsync(req.body);
     const existingProduct = await produtRepository.fetchProductById(
       params.productId
@@ -51,7 +51,7 @@ export async function createReview(req, res, next) {
  */
 export async function updateReview(req, res, next) {
   try {
-    const params = await findReviewSchema.validateAsync(req.params);
+    const params = await fetchReviewSchema.validateAsync(req.params);
     const validatedData = await updateReviewSchema.validateAsync(req.body);
     const existingReview = await repository.fetchReviewById(params.reviewId);
     if (!existingReview) return respond(res, 404, "Review not found");
@@ -67,7 +67,6 @@ export async function updateReview(req, res, next) {
   }
 }
 
-
 /**
  * Deletes an existing review.
  *
@@ -80,7 +79,7 @@ export async function updateReview(req, res, next) {
  */
 export async function deleteReview(req, res, next) {
   try {
-    const params = await findReviewSchema.validateAsync(req.params);
+    const params = await fetchReviewSchema.validateAsync(req.params);
     const existingReview = await repository.fetchReviewById(params.reviewId);
     if (!existingReview) return respond(res, 404, "Review not found");
     await repository.deleteById(existingReview.id);

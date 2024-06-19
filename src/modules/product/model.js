@@ -14,23 +14,8 @@ export const Product = sequelize.define(
       allowNull: false,
     },
 
-    vendor_id: {
-      type: DataTypes.UUID,
-      allowNull: false,
-    },
-
-    thumbnail_image: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
     product_name: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-    product_images: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
     },
 
@@ -51,58 +36,43 @@ export const Product = sequelize.define(
         isDecimal: true,
       },
     },
-  },
-  { timestamps: true, freezeTableName: true }
-);
 
-export const ProductCategory = sequelize.define(
-  "ProductCategory",
-  {
+    vendor_id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
+
     category_id: {
       type: DataTypes.UUID,
       allowNull: false,
     },
 
-    product_id: {
-      type: DataTypes.UUID,
+    thumbnail_image: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
+
+    product_images: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
+    },
+
   },
   { timestamps: true, freezeTableName: true }
 );
 
+
 /**
- * Defines the relationship between the User and Product models.
- * A User can have many Products, and each Product belongs to a single User.
- * When a User is deleted, all associated Products will also be deleted.
+ * Defines the relationships between the User, Product, and Category models.
+ *
+ * - A User can have many Products, where the `vendor_id` foreign key on the Product model references the User's primary key.
+ *   When a User is deleted, all associated Products will also be deleted.
+ *
+ * - A Category can have many Products, where the `category_id` foreign key on the Product model references the Category's primary key.
+ *   When a Category is deleted, all associated Products will also be deleted.
  */
 User.hasMany(Product, { foreignKey: "vendor_id", onDelete: "CASCADE" });
 Product.belongsTo(User, { foreignKey: "vendor_id", onDelete: "CASCADE" });
 
-/**
- * Defines the many-to-many relationship between Product and Category models.
- * The `ProductCategory` model is used as the junction table to connect the two models.
- * When a Product or Category is deleted, the associated records in the junction table will also be deleted.
- */
-
-/**
- * Defines the many-to-many relationship between Product and Category models.
- * The `ProductCategory` model is used as the junction table to connect the two models.
- * When a Product is deleted, the associated records in the junction table will also be deleted.
- */
-Product.belongsToMany(Category, {
-  through: ProductCategory,
-  foreignKey: "product_id",
-  onDelete: "CASCADE",
-});
-
-/**
- * Defines the many-to-many relationship between Category and Product models.
- * The `ProductCategory` model is used as the junction table to connect the two models.
- * When a Category or Product is deleted, the associated records in the junction table will also be deleted.
- */
-Category.belongsToMany(Product, {
-  through: ProductCategory,
-  foreignKey: "category_id",
-  onDelete: "CASCADE",
-});
+Category.hasMany(Product, { foreignKey: "category_id", onDelete: "CASCADE" });
+Product.belongsTo(Category, { foreignKey: "category_id", onDelete: "CASCADE" });

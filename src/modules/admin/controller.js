@@ -3,7 +3,7 @@ import { repository } from "./repository.js";
 import authRespository from "../auth/repository.js";
 import {
   createUserSchema,
-  getUserSchema,
+  fetchUserSchema,
   paginationSchema,
   updateUserSchema,
 } from "./schema.js";
@@ -55,7 +55,7 @@ export async function getPaginatedListOfUsers(req, res, next) {
  */
 export async function updateUser(req, res, next) {
   try {
-    const params = await getUserSchema.validateAsync(req.params);
+    const params = await fetchUserSchema.validateAsync(req.params);
     const existingUser = await repository.fetchUserById(params.userId);
     if (!existingUser) return respond(res, 404, "User not found");
     const validatedData = await updateUserSchema.validateAsync(req.body);
@@ -78,7 +78,7 @@ export async function updateUser(req, res, next) {
  */
 export async function deleteUser(req, res, next) {
   try {
-    const params = await getUserSchema.validateAsync(req.params);
+    const params = await fetchUserSchema.validateAsync(req.params);
     const existingUser = repository.fetchUserById(params.userId);
     if (!existingUser) return respond(res, 404, "User not found");
     await repository.deleteById(existingUser.id);

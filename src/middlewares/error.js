@@ -29,6 +29,6 @@ export function globalErrorHandler(err, req, res, next) {
  * @param {object} res - The Express response object.
  * @param {Function} next - The Express next middleware function.
  */
-export function routeNotFound(req, res, next) {
+export function routeNotFoundHandler(req, res, next) {
     return respond(res, 404, "Endpoint does not exist on this server")
 }
