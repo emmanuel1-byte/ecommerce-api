@@ -14,7 +14,7 @@ export const updateUserSchema = Joi.object({
     password: Joi.string().min(5).max(256).optional()
 })
 
-export const getUserSchema = Joi.object({
+export const fetchUserSchema = Joi.object({
     userId: Joi.string().uuid().required()
 })
 

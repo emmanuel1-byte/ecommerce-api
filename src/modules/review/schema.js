@@ -8,10 +8,10 @@ export const updateReviewSchema = Joi.object({
   comment: Joi.string().required(),
 })
 
-export const findProductSchema = Joi.object({
+export const fetchProductSchema = Joi.object({
   productId: Joi.string().uuid().required()
 })
 
-export const findReviewSchema = Joi.object({
+export const fetchReviewSchema = Joi.object({
   reviewId: Joi.string().uuid().required()
 })

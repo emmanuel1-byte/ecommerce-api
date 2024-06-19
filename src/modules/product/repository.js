@@ -1,42 +1,21 @@
 import { Op } from "sequelize";
 import { logger } from "../../utils/logger.js";
-import { Product, ProductCategory } from "./model.js";
+import { Product } from "./model.js";
 import { sequelize } from "../../utils/database.js";
 import { Rating } from "../rating/model.js";
+import { Review } from "../review/model.js";
 
-/**
- * Creates a new product with the provided data and associates it with the specified vendor and category.
- *
- * @param {Object} data - The product data to create.
- * @param {number} userId - The ID of the vendor creating the product.
- * @param {Object} thumbnail - The thumbnail image for the product.
- * @param {Object[]} productImages - The product images.
- * @returns {Promise<Product>} The created product.
- */
-async function create(data, userId, thumbnail, productImages) {
+async function create(vendorId, thumbnailUrl, productImagesUrl, data) {
   try {
-    return await sequelize.transaction(async (t) => {
-      const product = await Product.create(
-        {
-          vendor_id: userId,
-          product_name: data.name,
-          price: data.price,
-          description: data.description,
-          quantity: data.quantity,
-          thumbnail_image: thumbnail?.url,
-          product_images: productImages.map((file) => file?.url),
-        },
-        { transaction: t }
-      );
-
-      await ProductCategory.create(
-        {
-          product_id: product.id,
-          category_id: data.categoryId,
-        },
-        { transaction: t }
-      );
-      return product;
+    return await Product.create({
+      product_name: data.name,
+      description: data.description,
+      quantity: data.quantity,
+      price: data.price,
+      vendor_id: vendorId,
+      category_id: data.categoryId,
+      thumbnail_image: thumbnailUrl.url,
+      product_images: productImagesUrl?.map((file) => file.url),
     });
   } catch (err) {
     logger.error(err.stack);
@@ -52,7 +31,7 @@ async function create(data, userId, thumbnail, productImages) {
  * @param {Object[]} productImages - The updated product images.
  * @returns {Promise<Product[]>} The affected products.
  */
-async function update(data, productId, thumbnail, productImages) {
+async function update(productId, thumbnail, productImages, data) {
   try {
     const [numberOfAffectedRoles, affectedRoles] = await Product.update(
       {
@@ -83,10 +62,10 @@ async function update(data, productId, thumbnail, productImages) {
 async function fetchProductById(productId) {
   try {
     return await Product.findByPk(productId, {
-      include: { model: Rating, through: { attributes: [] } },
+      include: [{ model: Rating }, { model: Review }],
     });
   } catch (err) {
-    logger.error(err.stack);
+    logger.error(err.message);
   }
 }
 
@@ -127,7 +106,7 @@ async function fetchProductByKeyword(keyword) {
     return await Product.findAll({
       where: {
         product_name: {
-          [Op.iLike]: `%${keyword}`,
+          [Op.iLike]: `%${keyword}%`,
         },
       },
     });

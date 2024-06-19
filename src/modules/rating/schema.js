@@ -8,10 +8,10 @@ export const updateRatingSchema = Joi.object({
   rating: Joi.number().min(1).max(5).required(),
 })
 
-export const findProductSchema = Joi.object({
+export const fetchProductSchema = Joi.object({
   productId: Joi.string().uuid().required()
 })
 
-export const findRateSchema = Joi.object({
+export const fetchRatingSchema = Joi.object({
   rateId: Joi.string().uuid().required()
 })

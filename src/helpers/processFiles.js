@@ -1,4 +1,5 @@
 import { logger } from "../utils/logger.js";
+import { cloudinaryUpload } from '../services/upload/cloudinary.js'
 
 /**
  * Provides methods for processing files, including uploading thumbnails and product images to Cloudinary.
@@ -11,11 +12,11 @@ export class ProcessFiles {
         const productImagesBuffer = files["product_images"].map(
           (file) => file.buffer
         );
-        const [thumbnail, ...producImages] = await cloudinaryUpload([
+        const [thumbnailUrl, ...producImagesUrl] = await cloudinaryUpload([
           thumbnailBuffer,
           ...productImagesBuffer,
         ]);
-        return { thumbnail, producImages };
+        return { thumbnailUrl, producImagesUrl };
       }
       return {};
     } catch (err) {

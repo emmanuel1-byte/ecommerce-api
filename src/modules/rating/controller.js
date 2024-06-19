@@ -1,34 +1,37 @@
 import {
   createRatingSchema,
-  findProductSchema,
-  findRateSchema,
+  fetchProductSchema,
+  fetchRatingSchema,
   updateRatingSchema,
 } from "./schema.js";
 import produtRepository from "../product/repository.js";
 import { respond } from "../../utils/response.js";
 import repository from "./repository.js";
 
+
 /**
- * Creates a new rating for a product.
+ * Creates a new rating.
  *
  * @param {Object} req - The HTTP request object.
  * @param {Object} req.params - The request parameters.
  * @param {string} req.params.productId - The ID of the product to create a rating for.
- * @param {Object} req.body - The request body containing the rating data.
+ * @param {Object} req.body - The rating data to create.
  * @param {Object} res - The HTTP response object.
  * @param {Function} next - The next middleware function.
  * @returns {Promise<void>} - A promise that resolves when the rating is created.
  */
 export async function createRating(req, res, next) {
   try {
-    const params = await findProductSchema.validateAsync(req.params);
+    const params = await fetchProductSchema.validateAsync(req.params);
     const validatedData = await createRatingSchema.validateAsync(req.body);
-    const product = await produtRepository.fetchProductById(params.productId);
-    if (!product)
+    const existingRating = await produtRepository.fetchProductById(
+      params.productId
+    );
+    if (!existingRating)
       return respond(res, 404, "Error creating rating: Product not found");
     const rating = await repository.create(
       req.userId,
-      product.id,
+      existingRating.id,
       validatedData
     );
     return respond(res, 201, "Rating created succesfully", { rating });
@@ -37,20 +40,21 @@ export async function createRating(req, res, next) {
   }
 }
 
+
 /**
- * Updates an existing rating for a product.
+ * Updates an existing rating.
  *
  * @param {Object} req - The HTTP request object.
  * @param {Object} req.params - The request parameters.
  * @param {string} req.params.rateId - The ID of the rating to update.
- * @param {Object} req.body - The request body containing the updated rating data.
+ * @param {Object} req.body - The updated rating data.
  * @param {Object} res - The HTTP response object.
  * @param {Function} next - The next middleware function.
  * @returns {Promise<void>} - A promise that resolves when the rating is updated.
  */
 export async function updateRating(req, res, next) {
   try {
-    const params = await findRateSchema.validateAsync(req.params);
+    const params = await fetchRatingSchema.validateAsync(req.params);
     const validatedData = await updateRatingSchema.validateAsync(req.body);
     const existingRating = await repository.fetchRatingById(params.rateId);
     if (!existingRating)
@@ -67,19 +71,18 @@ export async function updateRating(req, res, next) {
   }
 }
 
+
 /**
- * Deletes an existing rating for a product.
+ * Deletes a rating by its ID.
  *
  * @param {Object} req - The HTTP request object.
- * @param {Object} req.params - The request parameters.
- * @param {string} req.params.rateId - The ID of the rating to delete.
  * @param {Object} res - The HTTP response object.
  * @param {Function} next - The next middleware function.
  * @returns {Promise<void>} - A promise that resolves when the rating is deleted.
  */
 export async function deleteRating(req, res, next) {
   try {
-    const parans = await findRateSchema.validateAsync(req.params);
+    const parans = await fetchRatingSchema.validateAsync(req.params);
     const rating = await repository.fetchRatingById(parans.rateId);
     if (!rating) return respond(res, 404, "rating not found");
     await repository.deleteById(rating.id);

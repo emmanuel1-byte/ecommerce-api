@@ -1,34 +1,22 @@
 import { sequelize } from "../../utils/database.js";
 import { logger } from "../../utils/logger.js";
-import { ProductRating, Rating } from "./model.js";
+import { Rating } from "./model.js";
 
 /**
- * Creates a new rating for a product.
+ * Creates a new rating in the database.
  *
  * @param {number} userId - The ID of the user creating the rating.
  * @param {number} productId - The ID of the product being rated.
  * @param {object} data - An object containing the rating data.
- * @param {number} data.rating - The rating value to be stored.
+ * @param {number} data.rating - The rating value.
  * @returns {Promise<object>} - The created rating object.
  */
 async function create(userId, productId, data) {
   try {
-    return sequelize.transaction(async (t) => {
-      const rating = await Rating.create(
-        {
-          rating: data.rating,
-          user_id: userId,
-        },
-        { transaction: t }
-      );
-      await ProductRating.create(
-        {
-          rate_id: rating.id,
-          product_id: productId,
-        },
-        { transaction: t }
-      );
-      return rating;
+    return await Rating.create({
+      user_id: userId,
+      product_id: productId,
+      rating: data.rating,
     });
   } catch (err) {
     logger.error(err.stack);
