@@ -13,7 +13,7 @@ import { respond } from "../utils/response.js";
  * @param {Function} next - The Express next middleware function.
  */
 export function globalErrorHandler(err, req, res, next) {
-    logger.error(err.message);
+    logger.error(err.stack);
     if (err instanceof Joi.ValidationError) {
         return respond(res, 400, err.stack);
     }
