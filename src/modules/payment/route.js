@@ -1,8 +1,9 @@
 import express from 'express'
+import { makePayment, verifyPayment } from './controller.js'
 const payment = express.Router()
 
-payment.get('/paystack/callback')
+payment.post('/', makePayment)
 
-payment.get('/paystack/verify-transaction')
+payment.post('/callback', verifyPayment)
 
 export default payment

@@ -79,7 +79,7 @@ export async function updateCategory(req, res, next) {
   try {
     const params = await getCategorySchema.validateAsync(req.params);
     const validatedData = await updateCategorySchema.validateAsync(req.body);
-    const existingCategory = await repository.findCategoryById(
+    const existingCategory = await repository.fetchCategoryById(
       params.categoryId
     );
     if (!existingCategory) return respond(res, 404, "category not found");
@@ -87,7 +87,7 @@ export async function updateCategory(req, res, next) {
       existingCategory.id,
       validatedData
     );
-    return respond(res, 200, "Category updated", { category });
+    return respond(res, 200, "Category updated succesfully", { category });
   } catch (err) {
     next(err);
   }

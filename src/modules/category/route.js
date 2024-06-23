@@ -16,10 +16,10 @@ category.get("/:categoryId", getCategory);
 
 category.get("/", getAllCategory);
 
-category.patch(
+category.put(
   "/:categoryId",
   validateJwt,
-  authorizeRole("Admin"),
+  // authorizeRole("Admin"),
   updateCategory
 );
 
