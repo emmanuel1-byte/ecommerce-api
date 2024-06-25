@@ -1,6 +1,7 @@
 import { randomBytes } from "crypto";
 import jwt from "jsonwebtoken";
 import config from "./config.js";
+const { JWT_SECRET } = config
 import { oneHour, twoMonthsExpiry } from "./date-time.js";
 
 /**
@@ -41,7 +42,7 @@ export function generateRefreshToken(userId) {
  */
 export function generateAccessToken(userId) {
   return {
-    access_token: jwt.sign({ sub: userId }, config.JWT_SECRET, {
+    access_token: jwt.sign({ sub: userId }, JWT_SECRET, {
       algorithm: "HS256",
       expiresIn: "20days",
     }),

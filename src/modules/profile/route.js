@@ -12,7 +12,6 @@ import {
   getPublicProfile,
   updateProfile,
 } from "./controller.js";
-import { cache } from "../../middlewares/cache.js";
 const profile = express.Router();
 
 profile.put(
@@ -29,7 +28,6 @@ profile.get(
   "/public/:userId",
   validateJwt,
   checkBlacklistedToken,
-  cache,
   getPublicProfile
 );
 
@@ -37,7 +35,6 @@ profile.get(
   "/private",
   validateJwt,
   checkBlacklistedToken,
-  cache,
   getPrivateProfile
 );
 
