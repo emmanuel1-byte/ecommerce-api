@@ -1,4 +1,5 @@
 import config from "../../utils/config.js";
+const { PAYSTACK } = config;
 import { logger } from "../../utils/logger.js";
 import axios from "axios";
 
@@ -11,7 +12,7 @@ export class PayStack {
           amount: data.amount,
           email: data.email,
         },
-        { headers: { Authorization: `Bearer ${config.PAYSTACK.SECRETkEY}` } }
+        { headers: { Authorization: `Bearer ${PAYSTACK.SECRETkEY}` } }
       );
       return response.data.data.authorization_url;
     } catch (err) {
@@ -23,7 +24,7 @@ export class PayStack {
     try {
       const response = await axios.get(
         `https://api.paystack.co/transaction/verify/:${refrence}`,
-        { headers: { Authorization: `Bearer ${config.PAYSTACK.SECRETkEY}` } }
+        { headers: { Authorization: `Bearer ${PAYSTACK.SECRETkEY}` } }
       );
       if (!response.data.status === false) {
         return response.data.message;

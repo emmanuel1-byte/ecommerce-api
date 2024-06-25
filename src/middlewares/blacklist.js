@@ -11,7 +11,7 @@ import { respond } from "../utils/response.js";
  */
 export async function checkBlacklistedToken(req, res, next) {
     try {
-        const existingToken = await authRepository.findBlackListedToken(req.accessToken)
+        const existingToken = await authRepository.fetchBlackListedToken(req.accessToken)
         if (!existingToken) {
             return next()
         }

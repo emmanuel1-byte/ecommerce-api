@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
-import { loginSchema, signUpSchema } from "../modules/auth/schema.js";
 import { respond } from "../utils/response.js";
 import repository from "../modules/auth/repository.js";
 import config from "../utils/config.js";
+const { JWT_SECRET } = config;
 
 
 /**
@@ -15,7 +15,7 @@ import config from "../utils/config.js";
 export function validateJwt(req, res, next) {
   const accessToken = req.headers.authorization?.split(" ")[1];
   if (!accessToken) return respond(res, 400, "Access token required!");
-  jwt.verify(accessToken, config.JWT_SECRET, (err, payload) => {
+  jwt.verify(accessToken, JWT_SECRET, (err, payload) => {
     if (err) {
       if (err instanceof jwt.TokenExpiredError) {
         return respond(res, 401, "Your session has expired. Please log in again.");

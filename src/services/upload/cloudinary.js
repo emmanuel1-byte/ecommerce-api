@@ -1,5 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 import config from "../../utils/config.js";
+const { CLOUDINARY } = config;
 import { logger } from "../../utils/logger.js";
 import { Readable } from "stream";
 
@@ -9,9 +10,9 @@ import { Readable } from "stream";
  */
 
 cloudinary.config({
-  cloud_name: config.CLOUDINARY.CLOUD_NAME,
-  api_key: config.CLOUDINARY.API_KEY,
-  api_secret: config.CLOUDINARY.API_SECRET,
+  cloud_name: CLOUDINARY.CLOUD_NAME,
+  api_key: CLOUDINARY.API_KEY,
+  api_secret: CLOUDINARY.API_SECRET,
 });
 
 /**

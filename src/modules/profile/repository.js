@@ -1,4 +1,3 @@
-import { client } from "../../middlewares/cache.js";
 import { sequelize } from "../../utils/database.js";
 import { logger } from "../../utils/logger.js";
 import { User } from "../auth/model.js";

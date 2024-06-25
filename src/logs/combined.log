@@ -14641,3 +14641,1211 @@
 {"level":"info","message":"Database connection established"}
 {"level":"info","message":"Server is running on  port 3000"}
 {"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"TypeError: authRepository.findBlackListedToken is not a function\n    at checkBlacklistedToken (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/middlewares/blacklist.js:14:52)\n    at Layer.handle [as handle_request] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/express/lib/router/route.js:149:13)\n    at file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/middlewares/auth.js:27:5\n    at /home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/jsonwebtoken/verify.js:261:12\n    at getSecret (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/jsonwebtoken/verify.js:97:14)\n    at module.exports [as verify] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/jsonwebtoken/verify.js:101:10)\n    at validateJwt (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/middlewares/auth.js:18:7)\n    at Layer.handle [as handle_request] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/express/lib/router/route.js:149:13)"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Cache miss for /v1/profiles/private"}
+{"level":"info","message":"Cache hit for /v1/profiles/private"}
+{"level":"info","message":"Cache hit for /v1/profiles/private"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Cache hit for /v1/profiles/private"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"TypeError: Invalid argument type\n    at encodeCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/RESP2/encoder.js:17:19)\n    at RedisCommandsQueue.getCommandToSend (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/commands-queue.js:138:45)\n    at Commander._RedisClient_tick (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:535:76)\n    at Commander._RedisClient_sendCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:522:82)\n    at Commander.commandsExecutor (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:190:154)\n    at BaseClass.<computed> [as get] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/commander.js:8:29)\n    at getPrivateProfile (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/profile/controller.js:56:31)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"TypeError: Invalid argument type\n    at encodeCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/RESP2/encoder.js:17:19)\n    at RedisCommandsQueue.getCommandToSend (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/commands-queue.js:138:45)\n    at Commander._RedisClient_tick (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:535:76)\n    at Commander._RedisClient_sendCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:522:82)\n    at Commander.commandsExecutor (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:190:154)\n    at BaseClass.<computed> [as get] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/commander.js:8:29)\n    at getPrivateProfile (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/profile/controller.js:56:31)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"TypeError: Invalid argument type\n    at encodeCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/RESP2/encoder.js:17:19)\n    at RedisCommandsQueue.getCommandToSend (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/commands-queue.js:138:45)\n    at Commander._RedisClient_tick (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:535:76)\n    at Commander._RedisClient_sendCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:522:82)\n    at Commander.commandsExecutor (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:190:154)\n    at BaseClass.<computed> [as get] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/commander.js:8:29)\n    at getPrivateProfile (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/profile/controller.js:57:31)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"TypeError: Invalid argument type\n    at encodeCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/RESP2/encoder.js:17:19)\n    at RedisCommandsQueue.getCommandToSend (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/commands-queue.js:138:45)\n    at Commander._RedisClient_tick (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:535:76)\n    at Commander._RedisClient_sendCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:522:82)\n    at Commander.commandsExecutor (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:190:154)\n    at BaseClass.<computed> [as get] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/commander.js:8:29)\n    at getPrivateProfile (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/profile/controller.js:56:31)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"TypeError: Invalid argument type\n    at encodeCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/RESP2/encoder.js:17:19)\n    at RedisCommandsQueue.getCommandToSend (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/commands-queue.js:138:45)\n    at Commander._RedisClient_tick (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:535:76)\n    at Commander._RedisClient_sendCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:522:82)\n    at Commander.commandsExecutor (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:190:154)\n    at BaseClass.<computed> [as set] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/commander.js:8:29)\n    at getPrivateProfile (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/profile/controller.js:58:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"TypeError: Invalid argument type\n    at encodeCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/RESP2/encoder.js:17:19)\n    at RedisCommandsQueue.getCommandToSend (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/commands-queue.js:138:45)\n    at Commander._RedisClient_tick (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:535:76)\n    at Commander._RedisClient_sendCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:522:82)\n    at Commander.commandsExecutor (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:190:154)\n    at BaseClass.<computed> [as get] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/commander.js:8:29)\n    at getPrivateProfile (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/profile/controller.js:56:31)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"TypeError: Invalid argument type\n    at encodeCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/RESP2/encoder.js:17:19)\n    at RedisCommandsQueue.getCommandToSend (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/commands-queue.js:138:45)\n    at Commander._RedisClient_tick (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:535:76)\n    at Commander._RedisClient_sendCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:522:82)\n    at Commander.commandsExecutor (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:190:154)\n    at BaseClass.<computed> [as set] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/commander.js:8:29)\n    at getPrivateProfile (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/profile/controller.js:58:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"TypeError: Invalid argument type\n    at encodeCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/RESP2/encoder.js:17:19)\n    at RedisCommandsQueue.getCommandToSend (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/commands-queue.js:138:45)\n    at Commander._RedisClient_tick (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:535:76)\n    at Commander._RedisClient_sendCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:522:82)\n    at Commander.commandsExecutor (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:190:154)\n    at BaseClass.<computed> [as set] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/commander.js:8:29)\n    at getPrivateProfile (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/profile/controller.js:58:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"Error: WHERE parameter \"userId\" has invalid \"undefined\" value\n    at PostgresQueryGenerator.whereItemQuery (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-generator.js:1743:13)\n    at /home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-generator.js:1734:25\n    at Array.forEach (<anonymous>)\n    at PostgresQueryGenerator.whereItemsQuery (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-generator.js:1732:35)\n    at PostgresQueryGenerator.getWhereConditions (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-generator.js:2075:19)\n    at PostgresQueryGenerator.selectQuery (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-generator.js:988:28)\n    at PostgresQueryInterface.select (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/dialects/abstract/query-interface.js:407:59)\n    at Profile.findAll (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/model.js:1140:47)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Profile.findOne (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/sequelize/lib/model.js:1240:12)"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"Error connecting to Redis server: Error: Socket closed unexpectedly"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"TypeError: Invalid argument type\n    at encodeCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/RESP2/encoder.js:17:19)\n    at RedisCommandsQueue.getCommandToSend (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/commands-queue.js:138:45)\n    at Commander._RedisClient_tick (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:535:76)\n    at Commander._RedisClient_sendCommand (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:522:82)\n    at Commander.commandsExecutor (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/client/index.js:190:154)\n    at BaseClass.<computed> [as set] (/home/emmanuel/kitchen/backend-projects/ecommerce-api/node_modules/@redis/client/dist/lib/commander.js:8:29)\n    at getPrivateProfile (file:///home/emmanuel/kitchen/backend-projects/ecommerce-api/src/modules/profile/controller.js:76:18)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Cache hit for key: profile:b565dea0-0e9e-4fd8-ae21-205d259e9b80"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Cache hit for key: profile:b565dea0-0e9e-4fd8-ae21-205d259e9b80"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Cache hit"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}

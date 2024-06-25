@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 import EventEmitter from "node:events";
 import { logger } from "../../utils/logger.js";
 import config from "../../utils/config.js";
+const {  GOOGLE, } = config;
 const emailEvent = new EventEmitter();
 
 /**
@@ -14,8 +15,8 @@ const transport = nodemailer.createTransport({
   port: 465,
   secure: false,
   auth: {
-    user: config.GOOGLE.USER,
-    pass: config.GOOGLE.PASSWORD,
+    user: GOOGLE.USER,
+    pass: GOOGLE.PASSWORD,
   },
 });
 
@@ -31,7 +32,7 @@ emailEvent.on(
   "accountVerificationEmail", async (req, email, token) => {
     try {
       const info = await transport.sendMail({
-        from: config.GOOGLE.USER,
+        from: GOOGLE.USER,
         to: email,
         subject: "Confirm Your Account",
         html: `Please click the link below to confirm your email address <a href=${`${req.protocol}://${req.hostname}/v1/auth/verify?token=${token}`}>Click here to confirm your email address</a>`,
@@ -55,7 +56,7 @@ emailEvent.on(
   "resetPasswordEmail", async (req, email, token) => {
     try {
       const info = await transport.sendMail({
-        from: config.GOOGLE.USER,
+        from: GOOGLE.USER,
         to: email,
         subject: "Reset Password",
         html: `<a href=${`${req.protocol}://${req.hostname}/v1/auth/verify-password-reset-token?token=${token}`}> click the link  to reset your password </a>`,

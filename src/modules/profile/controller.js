@@ -2,6 +2,7 @@ import { respond } from "../../utils/response.js";
 import repository from "./repository.js";
 import { fetchUserSchema, updateProfileSchema } from "./schema.js";
 import { ProcessFiles } from "../../helpers/processFiles.js";
+import { Cache } from "../../helpers/cache.js";
 
 /**
  * Updates the user's profile with the provided data.
@@ -17,12 +18,15 @@ export async function updateProfile(req, res, next) {
   try {
     const { uploadUrl } = ProcessFiles.profile(req.file);
     const validatedData = await updateProfileSchema.validateAsync(req.body);
-    const profile = await repository.update(
+    const updatedProfile = await repository.update(
       req.userId,
       uploadUrl,
       validatedData
     );
-    return respond(res, 200, "Profile updated successfully", { profile });
+    await Cache.set(`profile:${req.userId}`, updatedProfile);
+    return respond(res, 200, "Profile updated successfully", {
+      profile: updatedProfile,
+    });
   } catch (err) {
     next(err);
   }
@@ -49,17 +53,26 @@ export async function getPublicProfile(req, res, next) {
 }
 
 /**
- * Retrieves the private profile of the user with the given ID.
+ * Retrieves the private profile for the current user.
  *
  * @param {Object} req - The HTTP request object.
- * @param {number} req.userId - The ID of the user whose profile should be retrieved.
+ * @param {string} req.userId - The ID of the user whose private profile should be retrieved.
  * @param {Object} res - The HTTP response object.
  * @param {Function} next - The next middleware function in the stack.
- * @returns {Promise<void>} - A promise that resolves when the profile has been retrieved and sent in the response.
+ * @returns {Promise<void>} - A Promise that resolves when the profile has been retrieved and sent in the response.
  */
 export async function getPrivateProfile(req, res, next) {
   try {
+    const cachedProfile = await Cache.get(`profile:${req.userId}`);
+    if (cachedProfile)
+      return respond(
+        res,
+        200,
+        "Profile retrieved successfully",
+        cachedProfile
+      );
     const profile = await repository.fetchPrivateProfile(req.userId);
+    await Cache.set(`profile:${req.userId}`, profile);
     return respond(res, 200, "Profile retrieved successfully", { profile });
   } catch (err) {
     next(err);
@@ -81,6 +94,7 @@ export async function deleteAccount(req, res, next) {
     const params = await fetchUserSchema.validateAsync(req.params);
     const user = await repository.deleteUserById(params.userId);
     if (!user) return respond(res, 404, "User not found");
+    await Cache.delete(`profile:${req.userId}`);
     return respond(res, 200, "User deleted successfully");
   } catch (err) {
     next(err);

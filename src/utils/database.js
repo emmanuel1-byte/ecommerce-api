@@ -1,20 +1,18 @@
 import { Sequelize } from "sequelize";
 import { logger } from "./logger.js";
 import config from "./config.js";
-
+const { DATABASE_URI } = config;
 
 /**
  * Creates a new Sequelize instance with the specified database configuration.
  *
- * @param {string} config.DATABASE_URI - The database connection URI.
+ * @param {string} DATABASE_URI - The database connection URI.
  * @returns {Sequelize} A new Sequelize instance.
  */
-export const sequelize = new Sequelize(config.DATABASE_URI, {
+export const sequelize = new Sequelize(DATABASE_URI, {
   dialect: "postgres",
   logging: false,
 });
-
-
 
 /**
  * Establishes a connection to the database and synchronizes the database schema.
