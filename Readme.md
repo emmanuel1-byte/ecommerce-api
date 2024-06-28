@@ -34,7 +34,7 @@ This project is a full-fledged e-commerce platform built with Node.js, Express.j
 - Order history for users
 
 ### Admin Panel
-- Dashboard with sales analytics
+- Dashboard 
 - Manage users and roles
 - Manage products and categories
 - View and manage orders

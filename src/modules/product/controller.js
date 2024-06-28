@@ -1,3 +1,4 @@
+import { Cache } from "../../helpers/cache.js";
 import { ProcessFiles } from "../../helpers/processFiles.js";
 import { respond } from "../../utils/response.js";
 import repository from "./repository.js";
@@ -32,6 +33,7 @@ export async function createProduct(req, res, next) {
       producImagesUrl,
       validatedData
     );
+    await Cache.set(`product:${newProduct.id}`, newProduct);
     return respond(res, 201, "Product created succesfully", {
       product: newProduct,
     });
@@ -76,10 +78,17 @@ export async function getPaginatedListOfProducts(req, res, next) {
   try {
     const params = await paginationSchema.validateAsync(req.query);
     const { page, limit } = params;
+    const cachedProducts = await Cache.get("products");
+    if (cachedProducts) {
+      return respond(res, 200, "Product retrievd successfully", {
+        cachedProducts,
+      });
+    }
     const { product, pagination } = await repository.fetchAllProducts(
       page,
       limit
     );
+    await Cache.set("products", { product, pagination });
     return respond(res, 200, "Product retrievd successfully", {
       product,
       pagination,
@@ -131,6 +140,7 @@ export async function updateProduct(req, res, next) {
       producImages,
       validatedData
     );
+    await Cache.set(`product:${updatedProduct.id}`, updatedProduct);
     return respond(res, 200, "Product successfully updated", {
       product: updatedProduct,
     });
@@ -154,6 +164,7 @@ export async function deleteProduct(req, res, next) {
     const params = await getProductSchema.validateAsync(req.body);
     const product = await repository.deleteById(params.productId);
     if (!product) return respond(res, 404, "Product not found");
+    await Cache.delete(`product:${product.id}`);
     return respond(res, 200, "Product deleted succesfully");
   } catch (err) {
     next(err);
