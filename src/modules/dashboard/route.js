@@ -1,9 +1,11 @@
 import express from 'express'
+import { validateJwt } from '../../middlewares/auth.js';
+import { getAdminDashBoard, getVendorDashBoard } from './controller.js';
 const dashBoard = express.Router();
 
-dashBoard.post('/admin')
+dashBoard.get('/admin', validateJwt, getAdminDashBoard)
 
-dashBoard.post('/vendor')
+dashBoard.get('/vendor', validateJwt, getVendorDashBoard)
 
 
 export default dashBoard

@@ -19,6 +19,7 @@ async function create(vendorId, thumbnailUrl, productImagesUrl, data) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -50,6 +51,7 @@ async function update(productId, thumbnail, productImages, data) {
     return affectedRoles;
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -66,6 +68,7 @@ async function fetchProductById(productId) {
     });
   } catch (err) {
     logger.error(err.message);
+    throw Error(err);
   }
 }
 
@@ -92,6 +95,7 @@ async function fetchAllProducts(page, limit) {
     };
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -112,6 +116,7 @@ async function fetchProductByKeyword(keyword) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -123,9 +128,10 @@ async function fetchProductByKeyword(keyword) {
  */
 async function deleteProductById(productId) {
   try {
-    return await Product.destroy({ where: { id: productId }, force: true });
+    return await Product.destroy({ where: { id: productId } });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 

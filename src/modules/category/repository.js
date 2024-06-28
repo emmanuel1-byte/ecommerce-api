@@ -2,8 +2,6 @@ import { logger } from "../../utils/logger.js";
 import { Product } from "../product/model.js";
 import { Category } from "./model.js";
 
-
-
 /**
  * Creates a new category.
  *
@@ -20,6 +18,7 @@ async function create(data) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -33,9 +32,9 @@ async function fetchAllCategory() {
     return await Category.findAll({});
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
-
 
 /**
  * Fetches a category by its ID, including the associated products.
@@ -52,10 +51,9 @@ async function fetchCategoryById(categoryId) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
-
-
 
 /**
  * Updates a category by its ID.
@@ -78,6 +76,7 @@ async function updateCategory(categoryId, data) {
     return affectedRoles;
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -95,6 +94,7 @@ async function deleteCategory(categoryId) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 

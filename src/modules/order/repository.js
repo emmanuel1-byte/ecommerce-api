@@ -41,6 +41,7 @@ async function create(userId, data) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -73,6 +74,7 @@ async function updateOrder(userId, data) {
     return affectedRoles;
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -91,6 +93,7 @@ async function updateOrderStatus(userId, status) {
     );
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -115,6 +118,7 @@ async function fetchOrder(userId) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -138,6 +142,7 @@ async function fetchOrderById(orderId) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 

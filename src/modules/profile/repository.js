@@ -3,8 +3,6 @@ import { logger } from "../../utils/logger.js";
 import { User } from "../auth/model.js";
 import { Profile } from "./model.js";
 
-
-
 /**
  * Updates a user's profile information.
  *
@@ -16,20 +14,22 @@ import { Profile } from "./model.js";
  * @returns {Promise<object>} - The updated profile record.
  */
 async function update(userId, profilePicture, data) {
-    try {
-        const [updatedRows, updatedRecords] = await Profile.update({
-            fullname: data.fullname || sequelize.literal('fullname'),
-            profile_picture: profilePicture || sequelize.literal('profile_picture'),
-            date_of_birth: data.dateOfBirth || sequelize.literal('date_of_birth'),
-
-        }, { where: { userId: userId }, returning: true })
-        await client.del(['/v1/profile/private', `/v1/profile/public/${userId}`])
-        return updatedRecords
-    } catch (err) {
-        logger.error(err.stack);
-    }
+  try {
+    const [updatedRows, updatedRecords] = await Profile.update(
+      {
+        fullname: data.fullname || sequelize.literal("fullname"),
+        profile_picture: profilePicture || sequelize.literal("profile_picture"),
+        date_of_birth: data.dateOfBirth || sequelize.literal("date_of_birth"),
+      },
+      { where: { userId: userId }, returning: true }
+    );
+    await client.del(["/v1/profile/private", `/v1/profile/public/${userId}`]);
+    return updatedRecords;
+  } catch (err) {
+    logger.error(err.stack);
+    throw Error(err);
+  }
 }
-
 
 /**
  * Fetches the profile information for the specified user.
@@ -45,9 +45,9 @@ async function fetchProfile(userId) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
-
 
 /**
  * Fetches the private profile information for the specified user.
@@ -56,13 +56,17 @@ async function fetchProfile(userId) {
  * @returns {Promise<Object>} - The private profile information for the specified user, including their full name, profile picture, date of birth, and email address.
  */
 async function fetchPrivateProfile(userId) {
-    try {
-        return await Profile.findOne({ where: { userId: userId }, attributes: ["fullname", "profile_picture", "date_of_birth"], include: { model: User, attributes: ['email'] } })
-    } catch (err) {
-        logger.error(err.stack);
-    }
+  try {
+    return await Profile.findOne({
+      where: { userId: userId },
+      attributes: ["fullname", "profile_picture", "date_of_birth"],
+      include: { model: User, attributes: ["email"] },
+    });
+  } catch (err) {
+    logger.error(err.stack);
+    throw Error(err);
+  }
 }
-
 
 /**
  * Fetches the public profile information for the user with the given userId.
@@ -71,13 +75,17 @@ async function fetchPrivateProfile(userId) {
  * @returns {Promise<Object>} - The public profile information, including the user's fullname, profile picture, and email.
  */
 async function fetchPublicProfile(userId) {
-    try {
-        return await Profile.findOne({ where: { userId: userId }, attributes: ["fullname", "profile_picture"], include: { model: User, attributes: ['email'] } })
-    } catch (err) {
-        logger.error(err.stack);
-    }
+  try {
+    return await Profile.findOne({
+      where: { userId: userId },
+      attributes: ["fullname", "profile_picture"],
+      include: { model: User, attributes: ["email"] },
+    });
+  } catch (err) {
+    logger.error(err.stack);
+    throw Error(err);
+  }
 }
-
 
 /**
  * Deletes a user's account from the database.
@@ -86,25 +94,24 @@ async function fetchPublicProfile(userId) {
  * @returns {Promise<number>} - The number of rows affected by the deletion operation.
  */
 async function deleteUserById(userId) {
-    try {
-        return await Profile.destroy({ where: { userId: userId }, force: true })
-    } catch (err) {
-        logger.error(err.stack);
-    }
+  try {
+    return await Profile.destroy({ where: { userId: userId }, force: true });
+  } catch (err) {
+    logger.error(err.stack);
+    throw Error(err);
+  }
 }
-
-
 
 /**
  * Repository module for managing user profile data.
  */
 
 const repository = {
-    update,
-    fetchProfile,
-    fetchPrivateProfile,
-    fetchPublicProfile,
-    deleteUserById
-}
+  update,
+  fetchProfile,
+  fetchPrivateProfile,
+  fetchPublicProfile,
+  deleteUserById,
+};
 
 export default repository;

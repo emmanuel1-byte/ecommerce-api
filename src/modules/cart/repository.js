@@ -18,6 +18,7 @@ async function create(userId, productId) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -34,6 +35,7 @@ async function increaseQuantity(cartId) {
     await cart.save();
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -50,10 +52,9 @@ async function decreaseQuantity(cartId) {
     await cart.save();
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
-
-
 
 /**
  * Fetches the cart for the specified user, including the associated products.
@@ -84,6 +85,7 @@ async function fetchCart(userId) {
     return { cart, subtotal };
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -98,9 +100,9 @@ async function fetchCartById(cartId) {
     return await Cart.findByPk(cartId);
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
-
 
 /**
  * Deletes a product from the user's cart.
@@ -116,6 +118,7 @@ async function deleteFromCart(productId) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 

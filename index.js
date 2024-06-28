@@ -16,6 +16,7 @@ import review from "./src/modules/review/route.js";
 import cart from "./src/modules/cart/route.js";
 import order from "./src/modules/order/route.js";
 import payment from "./src/modules/payment/route.js";
+import dashBoard from "./src/modules/dashboard/route.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -46,6 +47,7 @@ app.use('/v1/reviews', review)
 app.use('/v1/carts', cart)
 app.use('/v1/orders', order)
 app.use('/v1/payments', payment)
+app.use('/v1/dashboards', dashBoard)
 
 app.use(routeNotFoundHandler);
 app.use(globalErrorHandler)
