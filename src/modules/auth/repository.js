@@ -16,25 +16,32 @@ import { BlackList, Token, User } from "./model.js";
  */
 async function create(data) {
   try {
-    return await sequelize.transaction(async t => {
+    return await sequelize.transaction(async (t) => {
+      const user = await User.create(
+        {
+          email: data.email,
+          role: data.role,
+          password: data.password,
+        },
+        { transaction: t }
+      );
 
-      const user = await User.create({
-        email: data.email,
-        role: data.role,
-        password: data.password,
-      }, { transaction: t });
+      await Profile.create(
+        {
+          userId: user.id,
+          profile_picture:
+            data.profile_picture ||
+            "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+          fullname: data.fullname,
+        },
+        { transaction: t }
+      );
 
-      await Profile.create({
-        userId: user.id,
-        profile_picture: data.profile_picture || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y',
-        fullname: data.fullname,
-      }, { transaction: t })
-
-      return user
-    })
-
+      return user;
+    });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -49,17 +56,18 @@ async function fetchUserByEmail(email) {
     return await User.findOne({ where: { email: email } });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
 async function fetchUserById(userId) {
   try {
-    return await User.findByPk(userId)
+    return await User.findByPk(userId);
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
-
 
 /**
  * Updates the password for a user with the given email address.
@@ -71,11 +79,12 @@ async function fetchUserById(userId) {
  */
 async function updatePassword(data) {
   try {
-    const user = await User.findOne({ where: { email: data.email } })
-    user.password = data.password
-    return await user.save()
+    const user = await User.findOne({ where: { email: data.email } });
+    user.password = data.password;
+    return await user.save();
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 /**
@@ -99,10 +108,9 @@ async function createToken(data) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
-
-
 
 /**
  * Fetches a token from the database.
@@ -115,6 +123,7 @@ async function fetchToken(token) {
     return await Token.findOne({ where: { token: token } });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -129,6 +138,7 @@ async function markAccountAsVerified(userId) {
     return await User.update({ verified: true }, { where: { id: userId } });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -143,6 +153,7 @@ async function deleteToken(token) {
     return await Token.destroy({ where: { token: token }, force: true });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -154,17 +165,19 @@ async function deleteToken(token) {
  */
 async function createBlackList(token) {
   try {
-    return await BlackList.create({ token: token })
+    return await BlackList.create({ token: token });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
 async function fetchBlackListedToken(token) {
   try {
-    return await BlackList.findOne({ where: { token: token } })
+    return await BlackList.findOne({ where: { token: token } });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -181,7 +194,7 @@ const repository = {
   deleteToken,
   createToken,
   createBlackList,
-  fetchBlackListedToken
+  fetchBlackListedToken,
 };
 
-export default repository
+export default repository;

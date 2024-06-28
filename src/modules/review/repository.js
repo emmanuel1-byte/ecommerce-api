@@ -18,6 +18,7 @@ async function create(userId, productId, data) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 /**
@@ -31,6 +32,7 @@ export async function fetchReviewById(reviewId) {
     return await Review.findByPk(reviewId);
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -53,6 +55,7 @@ export async function update(reviewId, data) {
     return affectedRoles;
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -67,6 +70,7 @@ export async function deleteById(reviewId) {
     return await Review.destroy({ where: { id: reviewId }, force: true });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 

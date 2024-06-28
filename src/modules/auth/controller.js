@@ -77,7 +77,7 @@ export async function verifyAccount(req, res, next) {
 export async function login(req, res, next) {
   try {
     const validatedData = await loginSchema.validateAsync(req.body);
-    const user = await repository.findUserByEmail(validatedData.email);
+    const user = await repository.fetchUserByEmail(validatedData.email);
     if (!user || !(await bcrypt.compare(validatedData.password, user.password)))
       return respond(res, 401, "Invalid credentials");
     const { access_token } = generateAccessToken(user.id);

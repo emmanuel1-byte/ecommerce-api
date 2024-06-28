@@ -20,6 +20,7 @@ async function create(userId, productId, data) {
     });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -42,6 +43,7 @@ async function update(rateId, data) {
     return affectedRoles;
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -56,6 +58,7 @@ async function fetchRatingById(ratingId) {
     return await Rating.findByPk(ratingId);
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -70,6 +73,7 @@ async function deleteById(ratingId) {
     return await Rating.destroy({ where: { id: ratingId }, force: true });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 

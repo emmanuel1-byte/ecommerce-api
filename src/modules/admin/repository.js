@@ -13,6 +13,7 @@ async function fetchUserById(userId) {
     return await User.findByPk(userId);
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -48,6 +49,7 @@ async function fetchAllUser(page, limit) {
     };
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -79,6 +81,7 @@ async function update(userId, data) {
     return sanitizedRecords;
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 
@@ -93,6 +96,7 @@ async function deleteById(userId) {
     return await User.destroy({ where: { id: userId }, force: true });
   } catch (err) {
     logger.error(err.stack);
+    throw Error(err);
   }
 }
 /**
