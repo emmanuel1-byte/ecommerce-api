@@ -1,10 +1,8 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import config from "../../utils/config.js";
-const { GOOGLE } = config
+const { GOOGLE } = config;
 import repository from "./repository.js";
-import { generateAccessToken } from "../../utils/generateToken.js";
-
 
 /**
  * Configures the Google OAuth2 strategy for Passport.js authentication.
@@ -37,11 +35,9 @@ passport.use(
             verified: true,
           });
 
-          const { access_token } = generateAccessToken(newUser.id);
-          return cb(null, { access_token, userId: newUser.id });
+          return cb(null, { userId: newUser.id });
         }
-        const { access_token } = generateAccessToken(existingUser.id);
-        return cb(null, { access_token, userId: existingUser.id });
+        return cb(null, { userId: existingUser.id });
       } catch (err) {
         return cb(err, null);
       }
@@ -49,4 +45,4 @@ passport.use(
   )
 );
 
-export default passport
+export default passport;
