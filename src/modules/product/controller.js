@@ -80,9 +80,7 @@ export async function getPaginatedListOfProducts(req, res, next) {
     const { page, limit } = params;
     const cachedProducts = await Cache.get("products");
     if (cachedProducts) {
-      return respond(res, 200, "Product retrievd successfully", {
-        cachedProducts,
-      });
+      return respond(res, 200, "Product retrievd successfully", cachedProducts);
     }
     const { product, pagination } = await repository.fetchAllProducts(
       page,

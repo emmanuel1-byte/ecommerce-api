@@ -1,4 +1,4 @@
-import { twoMonthsExpiry } from "../utils/date-time.js";
+import { twoMonthsExpiry } from "./date-time.js";
 
 /**
  * Sets a secure, HttpOnly cookie with the provided refresh token.

@@ -16513,3 +16513,32 @@
 {"level":"info","message":"Connected to Redis server"}
 {"level":"info","message":"Server is running on  port 3000"}
 {"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"Cache miss "}
+{"level":"info","message":"Cache hit"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Cache hit"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"info","message":"Cache hit"}
+{"level":"info","message":"Connected to Redis server"}
+{"level":"info","message":"Server is running on  port 3000"}
+{"level":"info","message":"Database connection established"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}
+{"level":"error","message":"Error connecting to Redis server: Error: connect ECONNREFUSED 127.0.0.1:6379"}

@@ -3,12 +3,7 @@ import {
   sendResetPasswordEmail,
   sendVerifcationEmail,
 } from "../../services/email/nodemailer.js";
-import {
-  generateAccessToken,
-  generateVerificationToken,
-  generateRefreshToken,
-  generateResetPasswordToken,
-} from "../../utils/generateToken.js";
+import { generateTokens } from "../../helpers/generateToken.js";
 import repository from "./repository.js";
 import {
   fetchTokenSchema,
@@ -32,7 +27,7 @@ export async function signup(req, res, next) {
   try {
     const validatedData = await signUpSchema.validateAsync(req.body);
     const newUser = await repository.create(validatedData);
-    const verificationToken = generateVerificationToken(newUser.id);
+    const { verificationToken } = generateTokens(newUser.id);
     sendVerifcationEmail(req, newUser.email, verificationToken.token);
     await repository.createToken(verificationToken);
     respond(
@@ -66,25 +61,20 @@ export async function verifyAccount(req, res, next) {
   }
 }
 
-/**
- * Logs in a user using email and password.
- * @param {import('express').Request} req - The Express request object.
- * @param {import('express').Response} res - The Express response object.
- * @param {import('express').NextFunction} next - The Express next function.
- * @returns {Promise<void>} - A promise that resolves after handling the login request.
- * @throws {Error} - Any error that occurs during login.
- */
 export async function login(req, res, next) {
   try {
     const validatedData = await loginSchema.validateAsync(req.body);
     const user = await repository.fetchUserByEmail(validatedData.email);
-    if (!user || !(await bcrypt.compare(validatedData.password, user.password)))
-      return respond(res, 401, "Invalid credentials");
-    const { access_token } = generateAccessToken(user.id);
-    const refreshToken = generateRefreshToken(user.id);
+    if (!user) return respond(res, 404, "User does not exist");
+    const isPasswordValid = await bcrypt.compare(
+      validatedData.password,
+      user.password
+    );
+    if (!isPasswordValid) return respond(res, 401, "Invalid credentials");
+    const { refreshToken, accessToken } = generateTokens(user.id);
     await repository.createToken(refreshToken);
     setCookie(res, refreshToken.token);
-    return respond(res, 200, "Login successfull", { access_token });
+    return respond(res, 200, "Login successfull", { user, accessToken });
   } catch (err) {
     next(err);
   }
@@ -100,11 +90,12 @@ export async function login(req, res, next) {
  */
 export async function google(req, res, next) {
   try {
-    const refreshToken = generateRefreshToken(req.user.userId);
-    const access_token = req.user.access_token;
+    const { refreshToken, accessToken } = generateTokens(req.user.userId);
     await repository.createToken(refreshToken);
     setCookie(res, refreshToken.token);
-    return respond(res, 200, "Login successfull", { access_token });
+    return respond(res, 200, "Login successfull", {
+      access_token: accessToken,
+    });
   } catch (err) {
     next(err);
   }
@@ -121,11 +112,12 @@ export async function google(req, res, next) {
 export async function refreshTokens(req, res, next) {
   try {
     const existingToken = await repository.fetchToken(getCookie(req));
-    const newRefreshToken = generateRefreshToken(existingToken.userId);
-    setCookie(res, newRefreshToken.token);
-    await repository.createToken(newRefreshToken);
-    const { access_token } = generateAccessToken(existingToken.userId);
-    respond(res, 200, "Tokens refreshed succesfully", { access_token });
+    const { refreshToken, accessToken } = generateTokens(existingToken.userId);
+    setCookie(res, refreshToken.token);
+    await repository.createToken(refreshToken);
+    respond(res, 200, "Tokens refreshed succesfully", {
+      access_token: accessToken,
+    });
   } catch (err) {
     next(err);
   }
@@ -144,7 +136,7 @@ export async function forgotPassword(req, res, next) {
     const validatedData = await forgotPasswordSchema.validateAsync(req.body);
     const user = await repository.fetchUserByEmail(validatedData.email);
     if (!user) return respond(res, 404, "Account does not exist");
-    const resetPasswordToken = generateResetPasswordToken(user.id);
+    const { resetPasswordToken } = generateTokens(user.id);
     await repository.createToken(resetPasswordToken);
     sendResetPasswordEmail(req, user.email, resetPasswordToken.token);
     return respond(res, 200, "Reset password link sent to your email");
